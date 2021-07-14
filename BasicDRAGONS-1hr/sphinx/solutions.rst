@@ -111,3 +111,102 @@ named ``reduce`` (also the default in that ``qa`` library), use the
    showrecipes ../playdata/N20160102S0270.fits -r reduce -m qa
 
 
+Solutions to Primitives exercises
+==================================================
+
+.. _solution_primitives1:
+
+Solution to :ref:`Exercise - Primitives 1 <ex_primitives1>`
+-----------------------------------------------------------
+
+The first step is get yourself familiarized with the primitive names.  This
+can be done by looking at the recipe.
+
+.. code-block::
+
+   showrecipes ../playdata/N20160102S0270.fits
+
+   p.prepare()
+   p.addDQ()
+   p.removeFirstFrame()
+   p.ADUToElectrons()
+   p.addVAR(read_noise=True, poisson_noise=True)
+   p.nonlinearityCorrect()
+   p.darkCorrect()
+   p.flatCorrect()
+   p.separateSky()
+   p.associateSky(stream='sky')
+   p.skyCorrect(instream='sky', mask_objects=False, outstream='skysub')
+   p.detectSources(stream='skysub')
+   p.transferAttribute(stream='sky', source='skysub', attribute='OBJMASK')
+   p.clearStream(stream='skysub')
+   p.associateSky()
+   p.skyCorrect(mask_objects=True)
+   p.detectSources()
+   p.adjustWCSToReference()
+   p.resampleToCommonFrame()
+   p.stackFrames()
+   p.writeOutputs()
+
+**Question 1:**
+
+This question is about sky correction.  The primitive ``skyCorrect`` is
+a good bet.
+
+.. code-block::
+
+   showpars ../playdata/N20160102S0270.fits skyCorrect
+
+   ...
+   operation            'median'             Averaging operation
+   Allowed values:
+       wtmean	variance-weighted mean
+       mean	arithmetic mean
+       median	median
+       lmedian	low-median
+   ...
+
+The default for combining the sky frames is ``median``.
+
+**Question 2:**
+
+The second question asks which paramter controls whether or not the dark
+correction will be run.  Let's look at ``darkCorrect``.
+
+.. code-block::
+   :emphasize-lines: 10
+
+   showpars ../playdata/N20160102S0270.fits darkCorrect
+
+   Dataset tagged as set(['RAW', 'GEMINI', 'NORTH', 'SIDEREAL', 'UNPREPARED', 'IMAGE', 'NIRI'])
+   Settable parameters on 'darkCorrect':
+   ========================================
+    Name			Current setting
+
+   suffix               '_darkCorrected'     Filename suffix
+   dark                 None                 Dark frame
+   do_dark              True                 Perform dark subtraction?
+
+The parameter ``do_dark`` controls the dark correction.
+
+**Question 3:**
+
+The last question is about the stacking of the reduced frames.  At the end
+of the recipe there's the primitive ``stackFrames``.
+
+.. code-block::
+
+   showpars ../playdata/N20160102S0270.fits stackFrames
+
+   ...
+   reject_method        'varclip'            Pixel rejection method
+   Allowed values:
+       minmax	reject highest and lowest pixels
+       none	no rejection
+       varclip	reject pixels based on variance array
+       sigclip	reject pixels based on scatter
+   ...
+
+The ``reject_method`` is the answer.  It can be set to ``minmax``, to ``none``,
+to ``varclip`` (currently the default), or to ``sigclip``.
+
