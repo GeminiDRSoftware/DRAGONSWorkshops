@@ -22,9 +22,8 @@ Welcome to Basic DRAGONS Workshop's documentation!
    demo_imaging
    explore_data
    caldb
-   customize_parameters
-   customize_recipes
    reduce
+   customize_recipes
    tools
    resources
    solutions

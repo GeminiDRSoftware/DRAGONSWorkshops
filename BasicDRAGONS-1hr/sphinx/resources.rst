@@ -7,3 +7,5 @@
 *********
 Resources
 *********
+
+dragons readthedoc.  the tutorials.   github.  Gemini helpdesk.

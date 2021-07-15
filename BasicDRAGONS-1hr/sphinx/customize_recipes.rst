@@ -9,3 +9,5 @@ Customize Recipes
 *****************
 
 with showrecipes and writeOutputs  parameters explicit here override everything
+
+how to call with reduce.
