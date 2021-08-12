@@ -35,7 +35,10 @@ Setting up
 The participants who wish to following along and run the examples and
 exercises are expected to have already installed DRAGONS on their
 computer.  See the installation instructions
-`installation instructions <https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/release-2.1.x/install.html>`_.
+`installation instructions <https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
+
+Follow the Python 3 and DRAGONS instructions, IRAF is not needed.  Make sure
+that you do the steps in the "Configure DRAGONS" section.
 
 Also, the participants will need to download the data package to run the
 examples and the exercises:

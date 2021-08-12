@@ -37,7 +37,7 @@ opened with ``astrodata``, it knows about itself.  For example, it knows that
 it is a NIRI file and an IMAGING FLAT.   This is how the Recipe System will
 know which recipes and which primitives to load and run.
 
-The other important component of the DRAGONS automation infrastruture is the
+The other important component of the DRAGONS automation infrastructure is the
 calibration manager.  It is operated with the ``caldb`` command.  (Again,
 there's an API too.)  This accesses a light weight ``sqlite`` database that
 will store information about your locally processed calibrations.  When a
