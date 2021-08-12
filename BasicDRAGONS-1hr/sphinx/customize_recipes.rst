@@ -92,7 +92,7 @@ name of our recipe library (``myNIRIrecipes``) and the name of the recipe
     reduce @target.lis -r myNIRIrecipes.reduce
 
 The new intermediate outputs have the suffixes ``_flatCorrected`` and
-``skySubtracted``.
+``_skySubtracted``.
 
 .. _ex_customrecipe1:
 

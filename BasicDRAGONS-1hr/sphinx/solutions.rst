@@ -97,20 +97,14 @@ Confirm activation with ``caldb config``.
 Solutions to the ``reduce`` exercises
 =====================================
 
-
 .. _solution_reduce1:
 
-Solution to :ref:`Exercise - "reduce" 1 <ex_reduce4>`
+Solution to :ref:`Exercise - "reduce" 1 <ex_reduce1>`
 -----------------------------------------------------
 
 ::
 
-   reduce -r detectSources N20160102S0296_stack.fits --suffix _ILoveDRAGONS
-
-   Or
-
-   reduce -r detectSources N20160102S0296_stack.fits --suffix=_ILoveDRAGONS
-
+   reduce @flats.lis -p normalizeFlat:scale=mean --suffix _exercise1
 
 .. _solution_reduce2:
 
@@ -119,21 +113,12 @@ Solution to :ref:`Exercise - "reduce" 2 <ex_reduce2>`
 
 ::
 
-   reduce @flats.lis -p normalizeFlat:scale=mean --suffix _exercise2
+   reduce @target.lis -r makeSkyFlat --suffix _skyflat
+
 
 .. _solution_reduce3:
 
 Solution to :ref:`Exercise - "reduce" 3 <ex_reduce3>`
------------------------------------------------------
-
-::
-
-   reduce @target.lis -r makeSkyFlat --suffix _skyflat
-
-
-.. _solution_reduce4:
-
-Solution to :ref:`Exercise - "reduce" 4 <ex_reduce4>`
 -----------------------------------------------------
 
 While it is not recommended to use a processed dark of the wrong exposure,
@@ -142,8 +127,7 @@ on the flux standard from the demo.
 
 ::
 
-    reduce @stdstar.lis -p addDQ:user_bpm=N20160102S0373_bpm.fits
-    --user_cal processed_dark:N20160102S0423_dark.fits
+    reduce @stdstar.lis --user_cal processed_dark:N20160102S0423_dark.fits
 
 
 Solutions to the Customize recipes exercise
@@ -164,20 +148,22 @@ Solution to :ref:`Exercise - Custom Recipe 1 <ex_customrecipe1>`
    mv recipes_FLAT_IMAGE.py myNIRIflats.py
 
 .. code-block:: python
-   :emphasize-lines: 8
+   :emphasize-lines: 8,12
 
-   p.prepare()
-   p.addDQ()
-   p.addVAR(read_noise=True)
-   p.nonlinearityCorrect()
-   p.ADUToElectrons()
-   p.addVAR(poisson_noise=True)
-   p.makeLampFlat()
-   p.writeOutputs()
-   p.normalizeFlat()
-   p.thresholdFlatfield()
-   p.storeProcessedFlat()
-   p.display()
+    def makeProcessedFlat(p):
+
+       p.prepare()
+       p.addDQ()
+       p.addVAR(read_noise=True)
+       p.nonlinearityCorrect()
+       p.ADUToElectrons()
+       p.addVAR(poisson_noise=True)
+       p.makeLampFlat()
+       p.writeOutputs()
+       p.normalizeFlat()
+       p.thresholdFlatfield()
+       p.storeProcessedFlat()
+       p.display()
 
 ::
 

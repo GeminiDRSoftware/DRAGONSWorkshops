@@ -38,19 +38,6 @@ If you wish to override that, you can set the ``--suffix`` option.
 
     reduce @targets --suffix=_mytest
 
-.. _ex_reduce1:
-
-.. admonition:: Exercise - "reduce" 1
-
-    Run the primitive ``detectSources`` on the flux standard stack
-    (``N20160102S0296_stack.fits``) and set the output suffix to
-    ``_ILoveDRAGONS``.
-
-    [:ref:`Solution <solution_reduce1>`]
-
-.. reduce -r detectSources N20160102S0296_stack.fits --suffix _ILoveDRAGONS
-
-
 Customizing parameters
 ======================
 We have seen earlier how to check the available input parameters and their
@@ -63,17 +50,20 @@ The syntax to change the value of an input parameter is as follow::
 
     reduce file.fits -p primitive:parameter=value
 
-.. _ex_reduce2:
+.. _ex_reduce1:
 
-.. admonition:: Exercise - "reduce" 2
+.. admonition:: Exercise - "reduce" 1
 
-    Reduce the flats from the demo again but this time set the scaling for
-    ``normalizeFlat`` flat to ``mean``.  To avoid overwriting our "real" processed
-    flat, let's set the suffix to ``_exercise2``.  (You can ignore the BPM.)
+    White down the ``reduce`` command to reduce the flats from the demo
+    (``flats.lis``) but this time set the scaling for ``normalizeFlat`` flat
+    to ``mean``.  To avoid overwriting our "real" processed
+    flat, let's set the suffix to ``_exercise1``.
 
-    Hint: ``cat flats.lis`` to get the name of a flat to use with ``showpars``.
+    Hint #1: ``cat flats.lis`` to get the name of a flat to use with ``showpars``.
 
-    [:ref:`Solution <solution_reduce2>`]
+    Hint #2: See the :ref:`command used in the demo <demo_flat>`
+
+    [:ref:`Solution <solution_reduce1>`]
 
 .. reduce @flats.lis -p normalizeFlat:scale=mean --suffix _exercise2
 
@@ -103,9 +93,9 @@ As we have seen before to see the list of all available recipes, we can use the
 The strings ``sq`` and ``qa`` refer to the reduction mode.  The ``qa`` mode,
 Quality Assessment, is used internally at Gemini.   General users will be
 using the ``sq``, Science Quality, recipes.   Note that the "Quicklook" mode, ``ql``,
-is coming up in DRAGONS version 3 for GMOS longslit reduction.
+is coming up in DRAGONS version 3.0 for GMOS longslit reduction.
 
-The reduction mode is ``sq`` by default.  To change that one uses the ``--qa``
+The reduction mode is ``sq`` by default.  To change that, one uses the ``--qa``
 or soon ``--ql`` flags with ``reduce``.  We will be using the science quality
 recipes here so we do not need those flags in this version of workshop.
 
@@ -122,16 +112,18 @@ Another use of the ``-r`` option is to run personal recipes rather than the
 ones distributed with DRAGONS.  We will show how that is done in the next
 chapter.
 
-.. _ex_reduce3:
+.. _ex_reduce2:
 
-.. admonition:: Exercise - "reduce" 3
+.. admonition:: Exercise - "reduce" 2
 
-    Run the ``makeSkyFlat`` recipe on the science frames.  Set the suffix
-    to ``_skyflat``.  Note that because
+    Write the command to use the ``makeSkyFlat`` recipe on the science frames.
+    Set the suffix to ``_skyflat``.
+
+    Note that because
     the target fills the field-of-view of the science frames, the sky flat
     here will not be usable, but it's okay, we are just playing while learning.
 
-    [:ref:`Solution <solution_reduce3>`]
+    [:ref:`Solution <solution_reduce2>`]
 
 .. reduce @target.lis -r makeSkyFlat --suffix _skyflat
 
@@ -144,96 +136,26 @@ usage example.
 
 ::
 
-    reduce file1.fits file2.fits --user_cal processed_arc:my_arc.fits
+    reduce file1.fits file2.fits --user_cal processed_<cal>:my_cal.fits
 
-.. _ex_reduce4:
+Allowed values for "<cal>": dark, bias, flat, arc, standard.  Eg::
 
-.. admonition:: Exercise - "reduce" 4
+    reduce @mylist.lis --user_cal processed_arc:my_special_arc.fits
+
+.. _ex_reduce3:
+
+.. admonition:: Exercise - "reduce" 3
 
     In the demo, we reduced the flux standard as follow:
 
     ::
 
-        reduce @stdstar.lis -p addDQ:user_bpm=N20160102S0373_bpm.fits darkCorrect:do_dark=False
+        reduce @stdstar.lis -p darkCorrect:do_dark=False
 
     Modify this command to allow the dark correction with the dark we used
     for the science frame, ``N20160102S0423_dark.fits``.
 
-    [:ref:`Solution <solution_reduce4>`]
+    [:ref:`Solution <solution_reduce3>`]
 
 .. reduce reduce @stdstar.lis -p addDQ:user_bpm=N20160102S0373_bpm.fits
     --user_cal processed_dark:N20160102S0423_dark.fits
-
-
-
-
-The "at"-file
-=============
-
-We have use the "at"-file already.  That ``@`` symbol followed by the name
-of the file list, that's an "at"-file.   They are very convenient to pass a
-list of files, but their use is not limited to list of files.
-
-Anything following the ``reduce`` command can be put in a file and prefixed
-with the ``@`` symbol on the ``reduce`` command line.
-
-Let say that we have a very customized call to ``reduce``::
-
-    reduce @stdstar.lis -r makeSkyFlat --suffix _skyflat \
-       -p stackFrames:reject_method=minmax stackFrames:operation=median \
-       skyCorrect:scale=False --user_cal processed_dark:N20160102S0423_dark.fits
-
-That would be rather tedious to type again and again, or to edit to
-experiment with the parameter values.  Also, when experimenting, it might be
-nice to keep of record of what is being attempted.
-
-All this can be written to a file and passed to ``reduce`` with ``@``.
-
-Let's write that file, let's call it ``params``, any name will do::
-
-    # I can add comments
-
-    -r makeSkyFlat   # in-line comments too
-    --suffix _skyflat
-
-    -p
-       stackFrames:reject_method=minmax
-       stackFrames:operation=median
-       #stackFrames:operation=mean   # I can comment out options to try something else
-
-       skyCorrect:scale=False
-
-    --user_cal processed_dark:N20160102S0423_dark.fits
-
-    # the file is completely free-form
-
-
-Then to use that file::
-
-    reduce @stdstar.lis @params
-
-The "at"-files can even be nested, for example I could add ``@stdstar.lis``
-to my ``params`` file::
-
-    @stdstar.lis
-
-    -r makeSkyFlat
-    --suffix skyflat
-
-    -p
-       stackFrames:reject_method=minmax
-       stackFrames:operation=median
-
-       skyCorrect:scale=False
-
-    --user_cal processed_dark=N20160102S0423_dark.fits
-
-And just call ``@params``, the ``@stdstar.lis`` will be expanded as if it had
-been on the command line.
-
-::
-
-    reduce @params
-
-
-

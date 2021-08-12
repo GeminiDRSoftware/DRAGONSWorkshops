@@ -138,6 +138,8 @@ And finally, to delete information about one file from the database::
 
     caldb remove name_of_file.fits
 
+``remove`` will only remove the entry in the database, it will not remove
+the file on disk.
 
 .. _ex_caldb2:
 
@@ -145,8 +147,8 @@ And finally, to delete information about one file from the database::
 
     Do :ref:`Exercise - Caldb 1 <ex_caldb1>` first.
 
-    #. Add the flat field from the demo to the new calibration manager created
-       in the first exercise.
+    #. Add the flat field from the demo (``N20160102S0373_flat.fits``) to the
+       new calibration manager created in the first exercise.
     #. Show the content of that database is indeed just that file.
     #. Reactivate the original database (the one in ``playground`` that we used
        for the demo) and list its content.  Both the dark and the flat should

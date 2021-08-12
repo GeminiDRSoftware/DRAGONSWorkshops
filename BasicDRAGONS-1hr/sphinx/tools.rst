@@ -148,6 +148,22 @@ Select only darks::
 
     dataselect ../playdata/*.fits --tags DARK
 
+Select only darks and send the results to a file::
+
+    dataselect ../playdata/*.fits --tags DARK -o darks.lis
+
+    cat darks.lis
+
+    # Includes tags: ['DARK']
+    # Excludes tags: []
+    # Descriptor expression: None
+    ../playdata/N20160102S0423.fits
+    ../playdata/N20160102S0424.fits
+    ...
+    ../playdata/N20160103S0471.fits
+    ../playdata/N20160103S0472.fits
+
+
 Select only **non**-darks::
 
     dataselect ../playdata/*.fits --xtags DARK
