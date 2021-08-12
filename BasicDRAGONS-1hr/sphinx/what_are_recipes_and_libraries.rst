@@ -134,7 +134,7 @@ set of tags that defines which type of data this library is for.
 .. Recipe tags: set(['DARK', 'NIRI', 'CAL'])
 
 As mentioned above, a recipe library can have more than one recipes.  So see
-the list of recipes, |showrecipes| has the option ``-all``.  Then, to see the
+the list of recipes, |showrecipes| has the option ``--all``.  Then, to see the
 sequence of primitives for one of those recipes, there's the option ``-r``.
 
 DRAGONS has the concept of "reduction mode".  Right now, there are two modes:

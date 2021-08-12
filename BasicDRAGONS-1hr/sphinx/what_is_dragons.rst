@@ -40,7 +40,7 @@ know which recipes and which primitives to load and run.
 The other important component of the DRAGONS automation infrastruture is the
 calibration manager.  It is operated with the ``caldb`` command.  (Again,
 there's an API too.)  This accesses a light weight ``sqlite`` database that
-will store information about your local processed calibrations.  When a
+will store information about your locally processed calibrations.  When a
 primitive is run and needs a calibration, the system will automatically
 fetch it, you do not have to specify it on the command line.  (You can if you
 really want to.)
@@ -65,7 +65,7 @@ The steps are:
 4. Reduce your science, it will pick up the calibrations by itself.
 
 As straightforward as a reduction can be, it can be customized
-to match your needs.  The options to primtives can be adjusted, the recipes
+to match your needs.  The options to the primtives can be adjusted, the recipes
 themselves can be adjusted.
 
 In this basic introduction to DRAGONS, we will explore all this and learn how to

@@ -47,7 +47,7 @@ selected recipe as that ``p`` argument we saw in the previous chapter.
 Primitive input parameters
 ==========================
 Also attached to a primitive set are the input parameters for each primitives
-and the default appropriate for that primitive set, that is for that type
+and the defaults appropriate for that primitive set, that is for that type
 of data.
 
 For the same generic primitive, the default values for input parameters for
@@ -71,7 +71,7 @@ The command signature is as follow::
 
 .. admonition:: Exercise - Primitives 1
 
-   Using the science frame N20160102S0270.fits located in directory
+   Using the science frame ``N20160102S0270.fits`` located in directory
    ``playdata``, find the answer to the questions below.  First, show the
    recipe for that file to see the list of primitives.  (Hint: ``showrecipes``)
 

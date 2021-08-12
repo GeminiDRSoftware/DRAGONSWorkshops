@@ -47,12 +47,17 @@ parameter.
 
     reduce -r inspect @stdstar.lis
 
+.. _ex_explore1:
 
 .. admonition:: Exercise - Explore 1
 
    #. Display ``N20160102S0271_stack.fits`` to buffer 2 and turn off the
       saturation marking.
    #. Reduce the time between frames to 1 second in ``inspect``.
+
+   Hint: ``reduce file.fits -r primitive -p primitive:parameter=value``
+
+   [:ref:`Solution <solution_explore1>`]
 
 
 .. reduce -r display N20160102S0271_stack.fits -p frame=2 threshold=None
@@ -78,7 +83,7 @@ it was not run after the stack was created.
 
     reduce -r detectSources N20160102S0296_stack.fits
 
-This will add a table with object coordinate, magnitudes, etc.  The output file
+This will add a table with object coordinates, magnitudes, etc.  The output file
 is ``N20160102S0296_sourcesDetected.fits``.  Use your preferred tool to access
 the FITS table named ``OBJCAT`` from that output.  Or you can use DRAGONS'
 ``astrodata`` to access the table as an Astropy ``Table``.
@@ -110,7 +115,7 @@ the FITS table named ``OBJCAT`` from that output.  Or you can use DRAGONS'
     :linenos:
     :lineno-start: 6
 
-    ad[0].OBJMASK
+    ad[0].OBJCAT
 
 ::
 

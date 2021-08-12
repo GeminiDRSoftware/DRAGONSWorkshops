@@ -6,14 +6,8 @@
 Learning Objectives
 *******************
 
-This material is built for a 1-hr workshop, planning on 45 minutes for the
-workshop and 15 minutes for questions and helping participants.
-
-The participants who wish to following along and run the examples and
-exercises are expected to have already installed DRAGONS on their
-computer.  See the installation instructions
-`installation instructions <https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/release-2.1.x/install.html>`_.
-
+This material is built for a 2-hr workshop, planning on 90 minutes for the
+workshop and 30 minutes for questions and helping participants.
 
 In this workshop, the participants will gain a basic understanding about the
 following topic:
@@ -33,5 +27,30 @@ be on some key, often needed elements.  The participants should refer to the
 `DRAGONS documentation <http://dragons.readthedocs.io/en/stable>`_ for more
 in-depth information.
 
-This workflow used the command-line interface to DRAGONS.  An API is available
+This workshop uses the command-line interface to DRAGONS.  An API is available
 but will not be covered in this workshop.
+
+Setting up
+==========
+The participants who wish to following along and run the examples and
+exercises are expected to have already installed DRAGONS on their
+computer.  See the installation instructions
+`installation instructions <https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/release-2.1.x/install.html>`_.
+
+Also, the participants will need to download the data package to run the
+examples and the exercises:
+
+    `<http://www.gemini.edu/sciops/data/software/datapkgs/niriimg_tutorial_datapkg-v1.tar>`_
+
+Download it and unpack it somewhere convenient.
+
+.. highlight:: bash
+
+::
+
+    cd <somewhere convenient>
+    tar xvf niriimg_tutorial_datapkg-v1.tar
+    bunzip2 niriimg_tutorial/playdata/*.bz2
+
+The datasets are found in the subdirectory ``niriimg_tutorial/playdata``, and
+we will work in the subdirectory named ``niriimg_tutorial/playground``.

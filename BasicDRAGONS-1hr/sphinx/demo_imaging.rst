@@ -10,7 +10,9 @@ Demo imaging
 
 To get ourselves oriented and get a feel for how data is processed with
 DRAGONS, we will run a full reduction on our sample data.  The full tutorial
-using this data can be found at ??.   Here we go through the steps with a bit
+using this data can be found at `<https://dragons.readthedocs.io/projects/niriimg-drtutorial/en/release-2.1.x/index.html>`_.
+
+Here, we go through the steps with a bit
 less discussion than in the full tutorial as we already cover most aspects
 in greater details in this workshop through the hands-on exercises.
 
@@ -95,7 +97,7 @@ The flats are a series of lamp-on and lamp-off flats.
 
 ::
 
-    dataselect ../playdata/*.fits --tags IMAGE --xtags CAL -o target.lis
+    dataselect ../playdata/*.fits --expr='object=="SN2014J"' -o target.lis
 
 
 Create the master dark, the BPM, and the master flat

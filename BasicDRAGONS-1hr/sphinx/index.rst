@@ -3,12 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Basic DRAGONS Workshop's documentation!
-==================================================
+Basic DRAGONS Workshop
+======================
 
-.. admonition:: Document ID
+.. .. admonition:: Document ID
 
-   PIPE-USER-???-BasicDRAGONSWorkshop
+..   PIPE-USER-???-BasicDRAGONSWorkshop
 
 .. toctree::
    :maxdepth: 1
