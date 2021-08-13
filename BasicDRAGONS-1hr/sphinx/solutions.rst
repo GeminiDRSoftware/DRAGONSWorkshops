@@ -148,7 +148,7 @@ Solution to :ref:`Exercise - Custom Recipe 1 <ex_customrecipe1>`
    mv recipes_FLAT_IMAGE.py myNIRIflats.py
 
 .. code-block:: python
-   :emphasize-lines: 8,12
+   :emphasize-lines: 10,14
 
     def makeProcessedFlat(p):
 
