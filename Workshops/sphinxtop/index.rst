@@ -14,13 +14,12 @@ Collection of DRAGONS Workshops
    :hidden:
    :caption: Contents:
 
-   w1
    BasicDRAGONS-2hr/sphinx/index
+   BasicDRAGONS-1hr/sphinx/index
 
 
-
-- :doc:`w1` - short
-- :doc:`BasicDRAGONS-2hr/sphinx/index` - full
+- :doc:`BasicDRAGONS-2hr/sphinx/index` - Standard Version (~2hrs)
+- :doc:`BasicDRAGONS-1hr/sphinx/index` - Short Version (~1hr)
 
 
 Indices and tables
@@ -30,4 +29,4 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. todolist::
+.. todolist::git

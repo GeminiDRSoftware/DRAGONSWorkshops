@@ -1,2 +1,0 @@
-.. include:: ../../BasicDRAGONS-1hr/sphinx/index.rst
-
