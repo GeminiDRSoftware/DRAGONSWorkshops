@@ -31,13 +31,4 @@ for a one-hour time slot.
    resources
    solutions
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 .. todolist::

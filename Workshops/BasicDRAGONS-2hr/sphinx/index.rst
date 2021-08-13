@@ -29,12 +29,4 @@ Basic DRAGONS Workshop
    solutions
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 .. todolist::
