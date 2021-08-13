@@ -1,6 +1,6 @@
 .. objectives.rst
 
-.. _objectives:
+.. _basic1_objectives:
 
 *******************
 Learning Objectives

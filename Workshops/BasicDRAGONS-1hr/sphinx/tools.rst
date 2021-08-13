@@ -12,7 +12,7 @@
 
 
 
-.. _tools:
+.. _basic1_tools:
 
 
 
@@ -120,7 +120,7 @@ The syntax is::
 The default is to print on the terminal.  A comma-separate list can be
 produced with the ``--csv`` flag.
 
-.. _ex_tools1:
+.. _basic1_ex_tools1:
 
 .. admonition:: Exercise - Tools 1
 
@@ -128,7 +128,7 @@ produced with the ``--csv`` flag.
     observations in ``playdata``.  Use the |descriptors| list from the
     |astrodatauser|.
 
-    [:ref:`Solution <solution_tools1>`]
+    [:ref:`Solution <basic1_solution_tools1>`]
 
 .. showd -d exposure_time,filter_name,ut_date ../playdata/*.fits
 
@@ -199,7 +199,7 @@ the internal quotes used around strings.
 
 Finally, the expression can use the ``and`` and ``or`` logical operators.
 
-.. _ex_tools2:
+.. _basic1_ex_tools2:
 
 .. admonition:: Exercise - Tools 2
 
@@ -211,7 +211,7 @@ Finally, the expression can use the ``and`` and ``or`` logical operators.
 
     Descriptors:  ``observation_type``, ``observation_class``, ``object``.
 
-    [:ref:`Solution <solution_tools2>`]
+    [:ref:`Solution <basic1_solution_tools2>`]
 
 .. dataselect ../playdata/*.fits --expr='observation_class=="science" and observation_type=="OBJECT"' | showd -d object
 .. dataselect ../playdata/*.fits --expr='observation_class=="partnerCal" and observation_type=="OBJECT"' | showd -d object

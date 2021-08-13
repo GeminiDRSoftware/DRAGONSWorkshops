@@ -2,7 +2,7 @@
 
 .. include:: DRAGONSlinks.txt
 
-.. _reduce:
+.. _basic1_reduce:
 
 ****************
 Using ``reduce``
@@ -50,7 +50,7 @@ The syntax to change the value of an input parameter is as follow::
 
     reduce file.fits -p primitive:parameter=value
 
-.. _ex_reduce1:
+.. _basic1_ex_reduce1:
 
 .. admonition:: Exercise - "reduce" 1
 
@@ -61,9 +61,9 @@ The syntax to change the value of an input parameter is as follow::
 
     Hint #1: ``cat flats.lis`` to get the name of a flat to use with ``showpars``.
 
-    Hint #2: See the :ref:`command used in the demo <demo_flat>`
+    Hint #2: See the :ref:`command used in the demo <basic1_demo_flat>`
 
-    [:ref:`Solution <solution_reduce1>`]
+    [:ref:`Solution <basic1_solution_reduce1>`]
 
 .. reduce @flats.lis -p normalizeFlat:scale=mean --suffix _exercise2
 
@@ -112,7 +112,7 @@ Another use of the ``-r`` option is to run personal recipes rather than the
 ones distributed with DRAGONS.  We will show how that is done in the next
 chapter.
 
-.. _ex_reduce2:
+.. _basic1_ex_reduce2:
 
 .. admonition:: Exercise - "reduce" 2
 
@@ -123,7 +123,7 @@ chapter.
     the target fills the field-of-view of the science frames, the sky flat
     here will not be usable, but it's okay, we are just playing while learning.
 
-    [:ref:`Solution <solution_reduce2>`]
+    [:ref:`Solution <basic1_solution_reduce2>`]
 
 .. reduce @target.lis -r makeSkyFlat --suffix _skyflat
 
@@ -142,7 +142,7 @@ Allowed values for "<cal>": dark, bias, flat, arc, standard.  Eg::
 
     reduce @mylist.lis --user_cal processed_arc:my_special_arc.fits
 
-.. _ex_reduce3:
+.. _basic1_ex_reduce3:
 
 .. admonition:: Exercise - "reduce" 3
 
@@ -155,7 +155,7 @@ Allowed values for "<cal>": dark, bias, flat, arc, standard.  Eg::
     Modify this command to allow the dark correction with the dark we used
     for the science frame, ``N20160102S0423_dark.fits``.
 
-    [:ref:`Solution <solution_reduce3>`]
+    [:ref:`Solution <basic1_solution_reduce3>`]
 
 .. reduce reduce @stdstar.lis -p addDQ:user_bpm=N20160102S0373_bpm.fits
     --user_cal processed_dark:N20160102S0423_dark.fits

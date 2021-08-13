@@ -4,7 +4,7 @@
 
 .. before we are too tired, let's tackle this one.
 
-.. _caldb:
+.. _basic1_caldb:
 
 *************************
 Local calibration manager
@@ -101,7 +101,7 @@ that you will not wipe the database accidentally.  **The** ``init`` **is require
 only once.**  If you already have the database created, maybe even populated,
 you can switch back to it simply by ensuring ``database_dir`` points to it.
 
-.. _ex_caldb1:
+.. _basic1_ex_caldb1:
 
 .. admonition:: Exercise - Caldb 1
 
@@ -111,7 +111,7 @@ you can switch back to it simply by ensuring ``database_dir`` points to it.
     Confirm with ``ls`` that a new ``cal_manager.db`` has been created.  You
     can also use ``caldb config`` to confirm that the new database is active.
 
-    [:ref:`Solution <solution_caldb1>`]
+    [:ref:`Solution <basic1_solution_caldb1>`]
 
 
 Usage
@@ -141,7 +141,7 @@ And finally, to delete information about one file from the database::
 ``remove`` will only remove the entry in the database, it will not remove
 the file on disk.
 
-.. _ex_caldb2:
+.. _basic1_ex_caldb2:
 
 .. admonition:: Exercise - Caldb 2
 
@@ -154,5 +154,5 @@ the file on disk.
        for the demo) and list its content.  Both the dark and the flat should
        now be listed.
 
-    [:ref:`Solution <solution_caldb2>`]
+    [:ref:`Solution <basic1_solution_caldb2>`]
 

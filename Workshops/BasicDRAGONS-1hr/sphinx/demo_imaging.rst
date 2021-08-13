@@ -2,7 +2,7 @@
 
 .. include:: DRAGONSlinks.txt
 
-.. _demo_imaging:
+.. _basic1_demo_imaging:
 
 ************
 Demo imaging
@@ -101,7 +101,7 @@ Create the master dark and add it to the calibration manager.
 The ``@`` character before the name of the input file is the "at-file" syntax.
 We will look into this later.
 
-.. _demo_flat:
+.. _basic1_demo_flat:
 
 **Flat**
 

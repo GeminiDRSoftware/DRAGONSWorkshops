@@ -2,7 +2,7 @@
 
 .. include:: DRAGONSlinks.txt
 
-.. _recipes_and_primitives:
+.. _basic1_recipes_and_primitives:
 
 **************************************************
 What are Recipes, Recipe Libraries, and Primitives

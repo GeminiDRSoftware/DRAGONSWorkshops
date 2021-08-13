@@ -1,6 +1,6 @@
 .. what_is_dragons.rst
 
-.. _what_is_dragons:
+.. _basic1_what_is_dragons:
 
 ***************
 What is DRAGONS

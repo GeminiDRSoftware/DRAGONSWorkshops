@@ -6,7 +6,7 @@
 
     <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/stable/index.html" target="_blank">Recipe System User Manual</a>
 
-.. _resources:
+.. _basic1_resources:
 
 *********
 Resources

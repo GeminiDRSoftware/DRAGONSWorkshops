@@ -2,7 +2,7 @@
 
 .. include:: DRAGONSlinks.txt
 
-.. _customize_recipes:
+.. _basic1_customize_recipes:
 
 *****************
 Customize Recipes
@@ -94,7 +94,7 @@ name of our recipe library (``myNIRIrecipes``) and the name of the recipe
 The new intermediate outputs have the suffixes ``_flatCorrected`` and
 ``_skySubtracted``.
 
-.. _ex_customrecipe1:
+.. _basic1_ex_customrecipe1:
 
 .. admonition:: Exercise - Custom Recipe 1
 
@@ -104,5 +104,5 @@ The new intermediate outputs have the suffixes ``_flatCorrected`` and
     Hint: ``cat flats.lis`` to get the name of a flat to use with ``showrecipes``
     to get the location and name of the NIRI flat recipe library.
 
-    [:ref:`Solution <solution_customrecipe1>`]
+    [:ref:`Solution <basic1_solution_customrecipe1>`]
 

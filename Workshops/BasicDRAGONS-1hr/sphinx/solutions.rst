@@ -2,7 +2,7 @@
 
 .. include:: DRAGONSlinks.txt
 
-.. _solutions:
+.. _basic1_solutions:
 
 **********************
 Solutions to exercises
@@ -11,10 +11,10 @@ Solutions to exercises
 Solutions to the Local calibration manager exercises
 ====================================================
 
-.. _solution_caldb1:
+.. _basic1_solution_caldb1:
 
-Solution to :ref:`Exercise - Caldb 1 <ex_caldb1>`
--------------------------------------------------
+Solution to :ref:`Exercise - Caldb 1 <basic1_ex_caldb1>`
+--------------------------------------------------------
 The ``rsys.cfg`` file should look like this::
 
     [calibs]
@@ -36,10 +36,10 @@ The ``rsys.cfg`` file should look like this::
    The 'standalone' flag is active, meaning that local calibrations will be used
 
 
-.. _solution_caldb2:
+.. _basic1_solution_caldb2:
 
-Solution to :ref:`Exercise - Caldb 2 <ex_caldb2>`
--------------------------------------------------
+Solution to :ref:`Exercise - Caldb 2 <basic1_ex_caldb2>`
+--------------------------------------------------------
 It is important do to successfully complete :ref:`Exercise - Caldb 1 <ex_caldb1>`
 before attempting Exercise 2.
 
@@ -97,29 +97,29 @@ Confirm activation with ``caldb config``.
 Solutions to the ``reduce`` exercises
 =====================================
 
-.. _solution_reduce1:
+.. _basic1_solution_reduce1:
 
-Solution to :ref:`Exercise - "reduce" 1 <ex_reduce1>`
------------------------------------------------------
+Solution to :ref:`Exercise - "reduce" 1 <basic1_ex_reduce1>`
+------------------------------------------------------------
 
 ::
 
    reduce @flats.lis -p normalizeFlat:scale=mean --suffix _exercise1
 
-.. _solution_reduce2:
+.. _basic1_solution_reduce2:
 
-Solution to :ref:`Exercise - "reduce" 2 <ex_reduce2>`
------------------------------------------------------
+Solution to :ref:`Exercise - "reduce" 2 <basic1_ex_reduce2>`
+------------------------------------------------------------
 
 ::
 
    reduce @target.lis -r makeSkyFlat --suffix _skyflat
 
 
-.. _solution_reduce3:
+.. _basic1_solution_reduce3:
 
-Solution to :ref:`Exercise - "reduce" 3 <ex_reduce3>`
------------------------------------------------------
+Solution to :ref:`Exercise - "reduce" 3 <basic1_ex_reduce3>`
+------------------------------------------------------------
 
 While it is not recommended to use a processed dark of the wrong exposure,
 here is how you would force DRAGONS to use the science's master dark
@@ -133,10 +133,10 @@ on the flux standard from the demo.
 Solutions to the Customize recipes exercise
 ===========================================
 
-.. _solution_customrecipe1:
+.. _basic1_solution_customrecipe1:
 
-Solution to :ref:`Exercise - Custom Recipe 1 <ex_customrecipe1>`
-----------------------------------------------------------------
+Solution to :ref:`Exercise - Custom Recipe 1 <basic1_ex_customrecipe1>`
+-----------------------------------------------------------------------
 
 ::
 
@@ -174,10 +174,10 @@ Solution to :ref:`Exercise - Custom Recipe 1 <ex_customrecipe1>`
 Solutions to the Tools exercise
 ===========================================
 
-.. _solution_tools1:
+.. _basic1_solution_tools1:
 
-Solution to :ref:`Exercise - Tools 1 <ex_tools1>`
--------------------------------------------------
+Solution to :ref:`Exercise - Tools 1 <basic1_ex_tools1>`
+--------------------------------------------------------
 
 ::
 
@@ -243,10 +243,10 @@ Solution to :ref:`Exercise - Tools 1 <ex_tools1>`
    ../playdata/N20160103S0472.fits           1.001         blank   2016-01-03
 
 
-.. _solution_tools2:
+.. _basic1_solution_tools2:
 
-Solution to :ref:`Exercise - Tools 2 <ex_tools2>`
--------------------------------------------------
+Solution to :ref:`Exercise - Tools 2 <basic1_ex_tools2>`
+--------------------------------------------------------
 
 ::
 
