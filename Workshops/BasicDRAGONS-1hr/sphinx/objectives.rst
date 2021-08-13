@@ -35,8 +35,9 @@ Setting up
 ==========
 The participants who wish to following along and run the examples and
 exercises are expected to have already installed DRAGONS on their
-computer.  See the installation instructions
-`installation instructions <https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
+computer.  See the **installation instructions**:
+
+`<https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
 
 Follow the Python 3 and DRAGONS instructions, IRAF is not needed.  Make sure
 that you do the steps in the "Configure DRAGONS" section.
@@ -63,9 +64,19 @@ Finally, for this short version, additional files that would normally be
 created during the workshop but are not due to the time constraint need to
 be download and added to the ``niriimg_tutorial/playground`` directory.
 
-KL????  Google Drive link
+    `<https://drive.google.com/file/d/1sJd8bHUFZ3-dNVT3_VllcqplnoSZr4LJ/view?usp=sharing>`_
+
+::
+
+    cd <somewhere convenient>/niriimg_tutorial/playground
+    tar xvzf demo_outputs.tar.gz
 
 The content of the ``niriimg_tutorial/playground`` directory should look like
-this:
+this::
 
-KL??? ls playground
+    N20160102S0271_stack.fits	cal_manager.db			reduce.log
+    N20160102S0296_stack.fits	calibrations			stdstar.lis
+    N20160102S0373_flat.fits	darks20s.lis			target.lis
+    N20160102S0423_dark.fits	flats.lis
+
+
