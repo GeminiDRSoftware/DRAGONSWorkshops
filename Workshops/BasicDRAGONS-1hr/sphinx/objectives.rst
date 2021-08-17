@@ -45,7 +45,7 @@ that you do the steps in the "Configure DRAGONS" section.
 Also, the participants will need to download the data package to run the
 examples and the exercises:
 
-    `<http://www.gemini.edu/sciops/data/software/datapkgs/niriimg_tutorial_datapkg-v1.tar>`_
+`<http://www.gemini.edu/sciops/data/software/datapkgs/niriimg_tutorial_datapkg-v1.tar>`_
 
 Download it and unpack it somewhere convenient.
 
@@ -64,7 +64,7 @@ Finally, for this short version, additional files that would normally be
 created during the workshop but are not due to the time constraint need to
 be download and added to the ``niriimg_tutorial/playground`` directory.
 
-    `<https://drive.google.com/file/d/1sJd8bHUFZ3-dNVT3_VllcqplnoSZr4LJ/view?usp=sharing>`_
+`<https://drive.google.com/file/d/1sJd8bHUFZ3-dNVT3_VllcqplnoSZr4LJ/view?usp=sharing>`_
 
 ::
 
