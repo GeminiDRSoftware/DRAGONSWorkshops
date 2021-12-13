@@ -4,11 +4,11 @@
 
 .. |suptools| raw:: html
 
-    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/stable/supptools.html" target="_blank">Supplemental Tools</a>
+    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/supptools.html" target="_blank">Supplemental Tools</a>
 
 .. |rsusermanual| raw:: html
 
-    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/stable/index.html" target="_blank">Recipe System User Manual</a>
+    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/index.html" target="_blank">Recipe System User Manual</a>
 
 
 

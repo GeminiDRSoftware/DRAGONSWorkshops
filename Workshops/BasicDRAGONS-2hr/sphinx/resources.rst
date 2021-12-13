@@ -4,7 +4,7 @@
 
 .. |rsusermanual| raw:: html
 
-    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/en/stable/index.html" target="_blank">Recipe System User Manual</a>
+    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/index.html" target="_blank">Recipe System User Manual</a>
 
 .. _resources:
 
