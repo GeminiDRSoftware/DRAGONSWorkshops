@@ -37,12 +37,12 @@ Configuration and initialization
 ================================
 
 .. warning:: The information provided here applies to DRAGONS
-   version 2.x.  The configuration and features of the calibration manager
-   in the upcoming version 3.x are substantially different.
+   version 3.0 (and older).  The configuration and features of the calibration
+   manager in the upcoming version 3.1 are substantially different.
 
 Configuration
 -------------
-The behavior and configuration of the local calibration manager is controlled
+The behavior and configuration of the local calibration manager are controlled
 in the file ``~/.geminidr/rsys.cfg``.   When you first install DRAGONS, you
 will have to create that directory and that file.
 
@@ -68,13 +68,13 @@ as you want, which one is used is controlled by ``database_dir``.
 In other words, you cannot set the name of the database but you can set its
 location on disk.
 
-We recommend to set up a new database for each observing project.  It helps
+We recommend setting up a new database for each observing project.  It helps
 keep things clean and avoids calibrations from other programs being unexpectedly
 picked up.  (If they were picked up, they would be a match, but it might get
 confusing if you are expecting another calibration to be picked up.)
 
 Here is an example of a ``rsys.cfg`` with several ``database_dir`` entries.
-Note that at all times, only one is active.
+Note that at all times, **only one is active**.
 
 ::
 
@@ -118,8 +118,8 @@ Usage
 
 The usage is fairly basic.  One can ``list`` the content, ``add`` content,
 and ``remove`` content.   DRAGONS will retrieve content from the database.
-In DRAGONS version 2, DRAGONS cannot add content, the user needs to add the
-processed calibrations to the database.
+In DRAGONS version 3.0 and older, DRAGONS cannot add content automatically,
+the user needs to add the processed calibrations to the database.
 
 To verify which database is currently active, use the ``config`` option::
 
@@ -136,6 +136,9 @@ To add information about a processed calibration to the database::
 And finally, to delete information about one file from the database::
 
     caldb remove name_of_file.fits
+
+``remove`` will only remove the entry in the database, it will not remove
+the file on disk.
 
 
 .. _ex_caldb2:

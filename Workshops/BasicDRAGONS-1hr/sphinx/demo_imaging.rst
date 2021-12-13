@@ -10,7 +10,7 @@ Demo imaging
 
 To get ourselves oriented and get a feel for how data is processed with
 DRAGONS, we will run a full reduction on our sample data.  The full tutorial
-using this data can be found at `<https://dragons.readthedocs.io/projects/niriimg-drtutorial/en/release-2.1.x/index.html>`_.
+using this data can be found at `<https://dragons.readthedocs.io/projects/niriimg-drtutorial/en/stable/index.html>`_.
 
 Here, we go through the steps with quite a bit
 less discussion than in the full tutorial as the purpose is simply to provide
@@ -43,7 +43,7 @@ We will discuss the local calibration manager in a later chapter.
 The calibration manager is the first thing to set up when starting on a data
 reduction project.  It provides the automated calibration association.
 
-The file to pay attention to is: ``~/.geminidr/rsys.cfg`` (DRAGONS v2.x)
+The file to pay attention to is: ``~/.geminidr/rsys.cfg`` (DRAGONS v3.0)
 
 For this example, that file to contain the following::
 
@@ -122,7 +122,7 @@ from the calibration database.
 
 ::
 
-    reduce @stdstar.lis -p darkCorrect:do_dark=False
+    reduce @stdstar.lis -p darkCorrect:do_cal=skip
 
 
 Reduce the science observations

@@ -43,10 +43,10 @@ Inspect
 It is recommended to inspect the raw data prior to reducing the data.  A quick
 visual inspection can catch obviously bad data, or flag some frames for
 more detailed inspection.  Having to run display on each frame individually
-would be painful.  The primitive ``inspect`` should be used here.  It
+would be painful.  The primitive ``inspect`` can be used here.  It
 accepts a list of file and will display each frame in sequence, adding a short
-pause between the frames.  The length pause can be controlled with the ``pause``
-parameter.
+pause between the frames.  The length of the pause can be controlled with
+the ``pause`` parameter.
 
 ::
 

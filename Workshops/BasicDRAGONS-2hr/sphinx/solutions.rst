@@ -26,12 +26,12 @@ will be run.
 
     Recipe not provided, default recipe (makeProcessedFlat) will be used.
     Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0373.fits
-    Input tags: ['FLAT', 'NORTH', 'AZEL_TARGET', 'GEMINI', 'IMAGE', 'LAMPON', 'GCALFLAT', 'RAW', 'AT_ZENITH', 'NON_SIDEREAL', 'CAL', 'UNPREPARED', 'NIRI', 'GCAL_IR_ON']
+    Input tags: ['GCALFLAT', 'NORTH', 'AT_ZENITH', 'NON_SIDEREAL', 'AZEL_TARGET', 'RAW', 'IMAGE', 'GCAL_IR_ON', 'NIRI', 'GEMINI', 'UNPREPARED', 'LAMPON', 'CAL', 'FLAT']
     Input mode: sq
     Input recipe: makeProcessedFlat
     Matched recipe: geminidr.niri.recipes.sq.recipes_FLAT_IMAGE::makeProcessedFlat
-    Recipe location: /Users/klabrie/condaenvs/gemini2_2.1.x_20200925/lib/python2.7/site-packages/dragons-2.1.1-py2.7-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.pyc
-    Recipe tags: set(['FLAT', 'IMAGE', 'NIRI', 'CAL'])
+    Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
+    Recipe tags: {'FLAT', 'IMAGE', 'CAL', 'NIRI'}
     Primitives used:
        p.prepare()
        p.addDQ()
@@ -58,12 +58,12 @@ and the recipe tags are highlighted.
 
    Recipe not provided, default recipe (makeProcessedDark) will be used.
    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0423.fits
-   Input tags: ['DARK', 'RAW', 'AT_ZENITH', 'NORTH', 'AZEL_TARGET', 'CAL', 'UNPREPARED', 'GEMINI', 'NIRI', 'NON_SIDEREAL']
+   Input tags: ['NON_SIDEREAL', 'AT_ZENITH', 'NIRI', 'NORTH', 'UNPREPARED', 'AZEL_TARGET', 'GEMINI', 'RAW', 'DARK', 'CAL']
    Input mode: sq
    Input recipe: makeProcessedDark
    Matched recipe: geminidr.niri.recipes.sq.recipes_DARK::makeProcessedDark
-   Recipe location: /Users/klabrie/condaenvs/gemini2_2.1.x_20200925/lib/python2.7/site-packages/dragons-2.1.1-py2.7-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_DARK.pyc
-   Recipe tags: set(['DARK', 'NIRI', 'CAL'])
+   Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_DARK.py
+   Recipe tags: {'NIRI', 'DARK', 'CAL'}
    Primitives used:
       p.prepare()
       p.addDQ(add_illum_mask=False)
@@ -75,6 +75,7 @@ and the recipe tags are highlighted.
       p.storeProcessedDark()
 
 
+
 .. _solution_recipes3:
 
 Solution to :ref:`Exercise - Recipes 3 <ex_recipes3>`
@@ -83,6 +84,11 @@ The option ``--all`` is used to show all the recipes.  Note in the module
 path the ``sq`` and the ``qa``.  The recipe names can be the same but their
 content will differ depending on the reduction mode selected.  Default is
 always ``sq``, science quality.
+
+The last three "sq" recipes are really the "ql" recipes.  This a newly
+discovered bug (circa Dec 2021).  The NIRI quicklook recipes are identical to
+the science recipes and are just "Python imported" from the science module,
+and that import trips the current implementation of ``showrecipes``.
 
 .. code-block::
 
@@ -93,8 +99,9 @@ always ``sq``, science quality.
    geminidr.niri.recipes.sq.recipes_IMAGE::reduce
    geminidr.niri.recipes.qa.recipes_IMAGE::makeSkyFlat
    geminidr.niri.recipes.qa.recipes_IMAGE::reduce
-
-
+   geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
+   geminidr.niri.recipes.sq.recipes_IMAGE::makeSkyFlat
+   geminidr.niri.recipes.sq.recipes_IMAGE::reduce
 
 To see the content of a specific recipe, name it with the ``-r`` flag.
 
@@ -174,20 +181,26 @@ The second question asks which paramter controls whether or not the dark
 correction will be run.  Let's look at ``darkCorrect``.
 
 .. code-block::
-   :emphasize-lines: 10
+   :emphasize-lines: 8
 
    showpars ../playdata/N20160102S0270.fits darkCorrect
 
-   Dataset tagged as set(['RAW', 'GEMINI', 'NORTH', 'SIDEREAL', 'UNPREPARED', 'IMAGE', 'NIRI'])
+   Dataset tagged as {'NORTH', 'IMAGE', 'NIRI', 'UNPREPARED', 'SIDEREAL', 'GEMINI', 'RAW'}
    Settable parameters on 'darkCorrect':
    ========================================
     Name			Current setting
 
+   do_cal               'procmode'           Calibration requirement
+   Allowed values:
+       procmode	Use the default rules set by the processingmode.
+       force	Require a calibration regardless of theprocessing mode.
+       skip	    Skip this correction, no calibration required.
+       None	    Field is optional
+
    suffix               '_darkCorrected'     Filename suffix
    dark                 None                 Dark frame
-   do_dark              True                 Perform dark subtraction?
 
-The parameter ``do_dark`` controls the dark correction.
+The parameter ``do_cal`` controls the dark correction.  Set to "skip".
 
 **Question 3:**
 
@@ -199,16 +212,16 @@ of the recipe there's the primitive ``stackFrames``.
    showpars ../playdata/N20160102S0270.fits stackFrames
 
    ...
-   reject_method        'varclip'            Pixel rejection method
+   reject_method        'sigclip'            Pixel rejection method
    Allowed values:
-       minmax	reject highest and lowest pixels
        none	no rejection
-       varclip	reject pixels based on variance array
+       minmax	reject highest and lowest pixels
        sigclip	reject pixels based on scatter
+       varclip	reject pixels based on variance array
    ...
 
 The ``reject_method`` is the answer.  It can be set to ``minmax``, to ``none``,
-to ``varclip`` (currently the default), or to ``sigclip``.
+to ``varclip``, or to ``sigclip`` (currently the default).
 
 
 Solutions to the Explore data exercises
@@ -372,8 +385,7 @@ on the flux standard from the demo.
 
 ::
 
-    reduce @stdstar.lis -p addDQ:user_bpm=N20160102S0373_bpm.fits
-    --user_cal processed_dark:N20160102S0423_dark.fits
+    reduce @stdstar.lis -p --user_cal processed_dark:N20160102S0423_dark.fits
 
 
 Solutions to the Customize recipes exercise
@@ -390,7 +402,7 @@ Solution to :ref:`Exercise - Custom Recipe 1 <ex_customrecipe1>`
 
 ::
 
-   cp /Users/klabrie/condaenvs/gemini2_2.1.x_20200925/lib/python2.7/site-packages/dragons-2.1.1-py2.7-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py .
+   cp /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py .
    mv recipes_FLAT_IMAGE.py myNIRIflats.py
 
 .. code-block:: python

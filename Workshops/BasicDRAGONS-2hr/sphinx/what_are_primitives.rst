@@ -53,7 +53,7 @@ of data.
 For the same generic primitive, the default values for input parameters for
 NIRI data can be different from the defaults applicable to GMOS data.  Even
 the set of available input parameters can be different, though we try to
-keep things a uniform as possible.
+keep things as uniform as possible.
 
 We will learn later how to customize the values of input parameters.  The
 first step however is to see what the input parameters are and what their
@@ -79,7 +79,7 @@ The command signature is as follow::
       correction?
    #. Which parameter from which primitive do I need to modify to turn off
       the dark correction?
-   #. Which parameter from which primtiive do I need to modify to change the
+   #. Which parameter from which primitive do I need to modify to change the
       rejection method during the final stacking of the frames?  What are the
       available options?
 

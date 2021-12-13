@@ -7,14 +7,14 @@
 **************************************************
 What are Recipes, Recipe Libraries, and Primitives
 **************************************************
-A DRAGONS **recipe** is a set of instructions, called **primitives** that
+A DRAGONS **recipe** is a set of instructions, called **primitives**, that
 processes data in a certain way.  Depending on the recipe, the input data
 can be in any state of processing.  Most often though, people will want to
 process Gemini raw data into a master calibration or a processed calibrated
 output.
 
 A **recipe library** is a collection of recipes.  The recipes in a library have
-one thing in common:  they all apply to the same type of data.  When DRAGONS
+one thing in common:  *they all apply to the same type of data*.  When DRAGONS
 search for a matching recipe for some input data, it searches for a recipe
 library.  In each library, one recipe is set as the default recipe.  To use
 the others, the user needs to specify the name of the non-default recipes.
@@ -106,7 +106,7 @@ of data.
 For the same generic primitive, the default values for input parameters for
 NIRI data can be different from the defaults applicable to GMOS data.  Even
 the set of available input parameters can be different, though we try to
-keep things a uniform as possible.
+keep things as uniform as possible.
 
 
 Exploring recipes and primitives
@@ -125,16 +125,14 @@ The syntax is::
 Let's look at a couple examples.  From the ``niriimg_tutorial/playdata``
 directory::
 
-    showrecipes N20160102S0373.fits
-
     Recipe not provided, default recipe (makeProcessedFlat) will be used.
     Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0373.fits
-    Input tags: ['FLAT', 'UNPREPARED', 'RAW', 'CAL', 'GCALFLAT', 'NON_SIDEREAL', 'NORTH', 'LAMPON', 'AT_ZENITH', 'NIRI', 'AZEL_TARGET', 'IMAGE', 'GCAL_IR_ON', 'GEMINI']
+    Input tags: ['GCALFLAT', 'NORTH', 'AT_ZENITH', 'NON_SIDEREAL', 'AZEL_TARGET', 'RAW', 'IMAGE', 'GCAL_IR_ON', 'NIRI', 'GEMINI', 'UNPREPARED', 'LAMPON', 'CAL', 'FLAT']
     Input mode: sq
     Input recipe: makeProcessedFlat
     Matched recipe: geminidr.niri.recipes.sq.recipes_FLAT_IMAGE::makeProcessedFlat
-    Recipe location: /Users/klabrie/condaenvs/gemini3_2.1.x_20200925/lib/python3.6/site-packages/dragons-2.1.1-py3.6-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
-    Recipe tags: {'FLAT', 'NIRI', 'CAL', 'IMAGE'}
+    Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
+    Recipe tags: {'FLAT', 'IMAGE', 'CAL', 'NIRI'}
     Primitives used:
        p.prepare()
        p.addDQ()
@@ -157,13 +155,17 @@ flag::
     showrecipes N20160102S0270.fits --all
 
     Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0270.fits
-    Input tags: {'NIRI', 'GEMINI', 'NORTH', 'RAW', 'UNPREPARED', 'IMAGE', 'SIDEREAL'}
+    Input tags: {'NIRI', 'NORTH', 'GEMINI', 'UNPREPARED', 'IMAGE', 'RAW', 'SIDEREAL'}
     Recipes available for the input file:
        geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
        geminidr.niri.recipes.sq.recipes_IMAGE::makeSkyFlat
        geminidr.niri.recipes.sq.recipes_IMAGE::reduce
        geminidr.niri.recipes.qa.recipes_IMAGE::makeSkyFlat
        geminidr.niri.recipes.qa.recipes_IMAGE::reduce
+       geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
+       geminidr.niri.recipes.sq.recipes_IMAGE::makeSkyFlat
+       geminidr.niri.recipes.sq.recipes_IMAGE::reduce
+
 
 The recipe library for science quality has three recipes: ``alignAndStack``,
 ``makeSkyFlat``, and ``reduce``.
@@ -174,6 +176,11 @@ The recipe library for science quality has three recipes: ``alignAndStack``,
     can safely ignore the "qa" mode, it is used exclusively at the observatory, at
     night, to help with the assessment of the sky conditions and the resulting
     quality of the data.  Everything defaults to "sq".
+
+    The last three "sq" recipes are really the "ql" recipes.  This a newly
+    discovered bug (circa Dec 2021).  The NIRI quicklook recipes are identical to
+    the science recipes and are just "Python imported" from the science module,
+    and that import trips the current implementation of ``showrecipes``.
 
 To see what a specific recipe looks like, not just the default recipe, use
 the ``-r`` flag::
@@ -266,16 +273,22 @@ If I wanted to turn off the dark correction...
 
     showpars N20160102S0270.fits darkCorrect
 
-    Dataset tagged as {'GEMINI', 'SIDEREAL', 'NORTH', 'UNPREPARED', 'RAW', 'IMAGE', 'NIRI'}
+    Dataset tagged as {'NORTH', 'IMAGE', 'NIRI', 'UNPREPARED', 'SIDEREAL', 'GEMINI', 'RAW'}
     Settable parameters on 'darkCorrect':
     ========================================
      Name			Current setting
 
+    do_cal               'procmode'           Calibration requirement
+    Allowed values:
+        procmode	Use the default rules set by the processingmode.
+        force	Require a calibration regardless of theprocessing mode.
+        skip	Skip this correction, no calibration required.
+        None	Field is optional
+
     suffix               '_darkCorrected'     Filename suffix
     dark                 None                 Dark frame
-    do_dark              True                 Perform dark subtraction?
 
-I would set ``do_dark`` to False.
+I would set ``do_cal`` to "skip".
 
 If I wanted to change the ``operation`` done when combining sky frames to
 a mean...
@@ -302,7 +315,7 @@ If I wanted to change the rejection method when doing the final stack...
     showpars N20160102S0270.fits stackFrames
 
     ...
-    reject_method        'varclip'            Pixel rejection method
+    reject_method        'sigclip'            Pixel rejection method
     Allowed values:
         none	no rejection
         minmax	reject highest and lowest pixels

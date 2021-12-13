@@ -144,7 +144,7 @@ Solution to :ref:`Exercise - Custom Recipe 1 <basic1_ex_customrecipe1>`
 
 ::
 
-   cp /Users/klabrie/condaenvs/gemini2_2.1.x_20200925/lib/python2.7/site-packages/dragons-2.1.1-py2.7-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py .
+   cp /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py .
    mv recipes_FLAT_IMAGE.py myNIRIflats.py
 
 .. code-block:: python

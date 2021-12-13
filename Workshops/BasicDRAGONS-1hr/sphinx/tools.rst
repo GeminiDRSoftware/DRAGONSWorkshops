@@ -34,7 +34,7 @@ of the |rsusermanual|.
 
 typewalk
 ========
-The oddly-named ``typewalk`` tool allows the user the list the astrodata tags
+The oddly-named ``typewalk`` tool allows the user the list the ``astrodata`` tags
 (formerly "types") of all the files in a directory, and can recurse ("walk")
 through subdirectories.  It can also be used to select data on tags, but we
 recommend using the much more flexible ``dataselect`` for that.

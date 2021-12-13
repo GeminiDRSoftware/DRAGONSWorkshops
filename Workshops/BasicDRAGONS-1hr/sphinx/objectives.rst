@@ -42,10 +42,12 @@ computer.  See the **installation instructions**:
 Follow the Python 3 and DRAGONS instructions, IRAF is not needed.  Make sure
 that you do the steps in the "Configure DRAGONS" section.
 
+**This workshop is written for DRAGONS v3.0**
+
 Also, the participants will need to download the data package to run the
 examples and the exercises:
 
-`<http://www.gemini.edu/sciops/data/software/datapkgs/niriimg_tutorial_datapkg-v1.tar>`_
+`<https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
 
 Download it and unpack it somewhere convenient.
 

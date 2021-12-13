@@ -12,7 +12,7 @@ Sometimes the DRAGONS recipes are not quite what is needed.  It is possible
 to customize a recipe and have DRAGONS run it.  The easiest way to customize
 a recipe is to find the most appropriate one, copy it over and edit it.
 
-Here we will show how to write intermediate results to disk for inspection.
+Here we will show you how to write intermediate results to disk for inspection.
 
 The first step is to find a recipe and copy it to the local directory.  Let's
 find the default NIRI science imaging recipe.
@@ -28,16 +28,17 @@ The recipe name and the recipe library location returned will look like this:
     ...
     Input recipe: reduce
     ...
-    Recipe location: /Users/klabrie/condaenvs/gemini2_2.1.x_20200925/lib/python2.7/site-packages/dragons-2.1.1-py2.7-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_IMAGE.pyc
+    Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_IMAGE.py
     ...
 
-Note the ``.pyc``.  This is compiled version, the code version is in the same
-location and named ``.py``.  That is the file we will copy over.  (It is not
-clear at this time why the ``.pyc`` is being returned here.)
+.. note:: The file might end with ``.pyc`` instead of ``.py``.  This is the
+    compiled file, the code file is in the same location and named ``.py``.  That
+    is the file we will copy over.  It is not clear at this time why the ``.pyc``
+    is sometimes returned instead of the ``.py`` filename.
 
 ::
 
-    cp /Users/klabrie/condaenvs/gemini2_2.1.x_20200925/lib/python2.7/site-packages/dragons-2.1.1-py2.7-macosx-10.7-x86_64.egg/geminidr/niri/recipes/sq/recipes_IMAGE.py .
+    cp /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_IMAGE.py .
 
 You should now have a file named ``recipes_IMAGE.py`` in your current directory.
 Let's rename it for clarity::
