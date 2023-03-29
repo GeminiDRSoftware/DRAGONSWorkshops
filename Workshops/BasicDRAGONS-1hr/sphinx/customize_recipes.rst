@@ -1,6 +1,6 @@
 .. customize_recipes.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _basic1_customize_recipes:
 
@@ -19,7 +19,7 @@ find the default NIRI science imaging recipe.
 
 ::
 
-    showrecipes ../playdata/N20160102S0270.fits
+    showrecipes ../playdata/example1/N20160102S0270.fits
 
 The recipe name and the recipe library location returned will look like this:
 
@@ -28,7 +28,7 @@ The recipe name and the recipe library location returned will look like this:
     ...
     Input recipe: reduce
     ...
-    Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_IMAGE.py
+    Recipe location: /Users/klabrie/condaenvs/public3.10_3.1.0/lib/python3.10/site-packages/geminidr/niri/recipes/sq/recipes_IMAGE.py
     ...
 
 .. note:: The file might end with ``.pyc`` instead of ``.py``.  This is the
@@ -38,7 +38,7 @@ The recipe name and the recipe library location returned will look like this:
 
 ::
 
-    cp /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_IMAGE.py .
+    cp /Users/klabrie/condaenvs/public3.10_3.1.0/lib/python3.10/site-packages/geminidr/niri/recipes/sq/recipes_IMAGE.py .
 
 You should now have a file named ``recipes_IMAGE.py`` in your current directory.
 Let's rename it for clarity::

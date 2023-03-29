@@ -1,6 +1,6 @@
 .. reduce.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _reduce:
 
@@ -57,7 +57,7 @@ We have seen earlier how to check the available input parameters and their
 default settings for a given frame and primitive.  The command |showpars| does
 that.  For example::
 
-    showpars ../playdata/N20160102S0363.fits normalizeFlat
+    showpars ../playdata/example1/N20160102S0363.fits normalizeFlat
 
 The syntax to change the value of an input parameter is as follow::
 
@@ -89,9 +89,9 @@ As we have seen before to see the list of all available recipes, we can use the
 
 ::
 
-    showrecipes ../playdata/N20160102S0270.fits --all
+    showrecipes ../playdata/example1/N20160102S0270.fits --all
 
-    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0270.fits
+    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1/N20160102S0270.fits
     Input tags: {'GEMINI', 'NORTH', 'NIRI', 'UNPREPARED', 'SIDEREAL', 'IMAGE', 'RAW'}
     Recipes available for the input file:
        geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
@@ -108,8 +108,8 @@ Quality Assessment, is used internally at Gemini.   General users will be
 using the ``sq``, Science Quality, recipes.
 
 .. warning:: The last three "sq" recipes
-    in the list above are really the "ql", quicklook, recipes.  This a newly
-    discovered bug (circa Dec 2021).  The NIRI quicklook recipes are identical to
+    in the list above are really the "ql", quicklook, recipes.  This a known
+    bug (circa April 2023).  The NIRI quicklook recipes are identical to
     the science recipes and are just "Python-imported" from the science module,
     and that import trips the current implementation of ``showrecipes``.
 

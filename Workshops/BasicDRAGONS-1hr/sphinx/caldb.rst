@@ -1,6 +1,6 @@
 .. caldb.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. before we are too tired, let's tackle this one.
 
@@ -36,60 +36,54 @@ the programming interface.
 Configuration and initialization
 ================================
 
-.. warning:: The information provided here applies to DRAGONS
-   version 3.0 (and older).  The configuration and features of the calibration
-   manager in the upcoming version 3.1 are substantially different.
+.. warning::
+   The information provided here applies to DRAGONS
+   version 3.1 (and newer).  The configuration and features of the calibration
+   manager in the previous versions, 3.0 and older, are substantially different.
+   Please refer to a previous version of this workhop if you are using
+   DRAGONS 3.0 or older,
+
+     `<https://collection-of-dragons-workshops.readthedocs.io/en/v1.0.0/BasicDRAGONS-1hr/sphinx/caldb.html>`_
 
 Configuration
 -------------
 The behavior and configuration of the local calibration manager are controlled
-in the file ``~/.geminidr/rsys.cfg``.   When you first install DRAGONS, you
+in the file ``~/.dragons/dragonsrc``.   When you first install DRAGONS, you
 will have to create that directory and that file.
 
-To complete the exercises, your ``rsys.cfg`` file must look like this:
+To complete the exercises, your ``dragonsrc`` file must look like this:
 
 ::
 
     [calibs]
-    standalone = True
-    database_dir = <where_the_data_package_is>/niriimg_tutorial/playground
+    databases = <where_the_data_package_is>/niriimg_tutorial/playground/cal_manager.db get
 
-The ``standalone`` value should always be ``True``.  At Gemini, we do have
-some systems that requires ``False`` but that will never be the case for
-normal users.
-
-The value of ``database_dir`` can be any **existing** path on your machine.  The
+The value of ``databases`` can be any **existing** path on your machine.  The
 calibration database will be created, and then expected to be in that directory.
-The database name is **always** ``cal_manager.db``. If you change the value
-of ``database_dir`` and initialize, it will create and use a different
-``cal_manager.db`` in that new path.  You can have as many ``cal_manager.db``
-as you want, which one is used is controlled by ``database_dir``.
-
-In other words, you cannot set the name of the database but you can set its
-location on disk.
+The database name can be anything, here we name it ``cal_manager.db`` for
+continuity with pre-v3.1 DRAGONS.
 
 We recommend setting up a new database for each observing project.  It helps
 keep things clean and avoids calibrations from other programs being unexpectedly
 picked up.  (If they were picked up, they would be a match, but it might get
 confusing if you are expecting another calibration to be picked up.)
 
-Here is an example of a ``rsys.cfg`` with several ``database_dir`` entries.
-Note that at all times, only one is active.
+Here is an example of a ``dragonsrc`` with several ``databases`` entries.
+Note that at all times, **only one** ``databases`` directive is active, the
+others are commented out.
 
 ::
 
     [calibs]
-    standalone = True
+    databases = /Users/klabrie/data/tutorials/niriimg_tutorial/playground/cal_manager.db get
+    #databases = /Users/klabrie/data/tutorials/gmosimg_tutorial/playground/cal_manager.db get
 
-    database_dir = /Users/klabrie/data/tutorials/niriimg_tutorial/playground
-    #database_dir = /Users/klabrie/data/tutorials/gmosimg_tutorial/playground
-
-    #database_dir = /Users/klabrie/data/workspace/GMOS540feature
+    #databases = /Users/klabrie/data/workspace/GMOS540feature/cal_manager.db get
 
 Initialization
 --------------
 
-Once your ``rsys.cfg`` is set up, you can create a **new** database with
+Once your ``dragonsrc`` is set up, you can create a **new** database with
 
 ::
 
@@ -98,7 +92,7 @@ Once your ``rsys.cfg`` is set up, you can create a **new** database with
 If the database already exists, that command will refuse to work.  This ensures
 that you will not wipe the database accidentally.  **The** ``init`` **is required
 only once.**  If you already have the database created, maybe even populated,
-you can switch back to it simply by ensuring ``database_dir`` points to it.
+you can switch back to it simply by ensuring ``databases`` points to it.
 
 .. _basic1_ex_caldb1:
 
@@ -117,9 +111,13 @@ Usage
 =====
 
 The usage is fairly basic.  One can ``list`` the content, ``add`` content,
-and ``remove`` content.   DRAGONS will retrieve content from the database.
-In DRAGONS version 3.0 and older, DRAGONS cannot add content automatically,
-the user needs to add the processed calibrations to the database.
+and ``remove`` content.   DRAGONS will retrieve content from the database.  If
+the "store" flag is set, DRAGONS will also automatically add content to the
+database.
+
+.. warning:: In DRAGONS version 3.0 and older, DRAGONS cannot add content
+      automatically, the user **must** add the processed calibrations to the
+      database with an explicit ``caldb add``.
 
 To verify which database is currently active, use the ``config`` option::
 

@@ -1,6 +1,6 @@
 .. solutions.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _solutions:
 
@@ -22,15 +22,15 @@ will be run.
 .. code-block::
    :emphasize-lines: 3,7,11,12,13,14,15,16,17,18,19,20,21
 
-    showrecipes ../playdata/N20160102S0373.fits
+    showrecipes ../playdata/example1/N20160102S0373.fits
 
     Recipe not provided, default recipe (makeProcessedFlat) will be used.
-    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0373.fits
+    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1/N20160102S0373.fits
     Input tags: ['GCALFLAT', 'NORTH', 'AT_ZENITH', 'NON_SIDEREAL', 'AZEL_TARGET', 'RAW', 'IMAGE', 'GCAL_IR_ON', 'NIRI', 'GEMINI', 'UNPREPARED', 'LAMPON', 'CAL', 'FLAT']
     Input mode: sq
     Input recipe: makeProcessedFlat
     Matched recipe: geminidr.niri.recipes.sq.recipes_FLAT_IMAGE::makeProcessedFlat
-    Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
+    Recipe location: /Users/klabrie/condaenvs/public3.10_3.1.0/lib/python3.10/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
     Recipe tags: {'FLAT', 'IMAGE', 'CAL', 'NIRI'}
     Primitives used:
        p.prepare()
@@ -54,15 +54,15 @@ and the recipe tags are highlighted.
 .. code-block::
    :emphasize-lines: 5, 7, 10
 
-   showrecipes ../playdata/N20160102S0423.fits
+   showrecipes ../playdata/example1/N20160102S0423.fits
 
    Recipe not provided, default recipe (makeProcessedDark) will be used.
-   Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0423.fits
+   Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1/N20160102S0423.fits
    Input tags: ['NON_SIDEREAL', 'AT_ZENITH', 'NIRI', 'NORTH', 'UNPREPARED', 'AZEL_TARGET', 'GEMINI', 'RAW', 'DARK', 'CAL']
    Input mode: sq
    Input recipe: makeProcessedDark
    Matched recipe: geminidr.niri.recipes.sq.recipes_DARK::makeProcessedDark
-   Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_DARK.py
+   Recipe location: /Users/klabrie/condaenvs/public3.10_3.1.0/lib/python3.10/site-packages/geminidr/niri/recipes/sq/recipes_DARK.py
    Recipe tags: {'NIRI', 'DARK', 'CAL'}
    Primitives used:
       p.prepare()
@@ -85,14 +85,14 @@ path the ``sq`` and the ``qa``.  The recipe names can be the same but their
 content will differ depending on the reduction mode selected.  Default is
 always ``sq``, science quality.
 
-The last three "sq" recipes are really the "ql" recipes.  This a newly
-discovered bug (circa Dec 2021).  The NIRI quicklook recipes are identical to
+The last three "sq" recipes are really the "ql" recipes.  This a known
+bug (circa April 2023).  The NIRI quicklook recipes are identical to
 the science recipes and are just "Python imported" from the science module,
 and that import trips the current implementation of ``showrecipes``.
 
 .. code-block::
 
-   showrecipes ../playdata/N20160102S0270.fits --all
+   showrecipes ../playdata/example1/N20160102S0270.fits --all
 
    geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
    geminidr.niri.recipes.sq.recipes_IMAGE::makeSkyFlat
@@ -107,7 +107,7 @@ To see the content of a specific recipe, name it with the ``-r`` flag.
 
 .. code-block::
 
-   showrecipes ../playdata/N20160102S0270.fits -r makeSkyFlat
+   showrecipes ../playdata/example1/N20160102S0270.fits -r makeSkyFlat
 
 Finally, to print the content of the quality assessment, "qa", recipe
 named ``reduce`` (also the default in that ``qa`` library), use the
@@ -115,7 +115,7 @@ named ``reduce`` (also the default in that ``qa`` library), use the
 
 .. code-block::
 
-   showrecipes ../playdata/N20160102S0270.fits -r reduce -m qa
+   showrecipes ../playdata/example1/N20160102S0270.fits -r reduce -m qa
 
 
 Solutions to Primitives exercises
@@ -131,7 +131,7 @@ can be done by looking at the recipe.
 
 .. code-block::
 
-   showrecipes ../playdata/N20160102S0270.fits
+   showrecipes ../playdata/example1/N20160102S0270.fits
 
    p.prepare()
    p.addDQ()
@@ -162,7 +162,7 @@ a good bet.
 
 .. code-block::
 
-   showpars ../playdata/N20160102S0270.fits skyCorrect
+   showpars ../playdata/example1/N20160102S0270.fits skyCorrect
 
    ...
    operation            'median'             Averaging operation
@@ -183,7 +183,7 @@ correction will be run.  Let's look at ``darkCorrect``.
 .. code-block::
    :emphasize-lines: 8
 
-   showpars ../playdata/N20160102S0270.fits darkCorrect
+   showpars ../playdata/example1/N20160102S0270.fits darkCorrect
 
    Dataset tagged as {'NORTH', 'IMAGE', 'NIRI', 'UNPREPARED', 'SIDEREAL', 'GEMINI', 'RAW'}
    Settable parameters on 'darkCorrect':
@@ -209,7 +209,7 @@ of the recipe there's the primitive ``stackFrames``.
 
 .. code-block::
 
-   showpars ../playdata/N20160102S0270.fits stackFrames
+   showpars ../playdata/example1/N20160102S0270.fits stackFrames
 
    ...
    reject_method        'sigclip'            Pixel rejection method
@@ -258,13 +258,11 @@ Solutions to the Local calibration manager exercises
 
 Solution to :ref:`Exercise - Caldb 1 <ex_caldb1>`
 -------------------------------------------------
-The ``rsys.cfg`` file should look like this::
+The ``dragonsrc`` file should look like this::
 
     [calibs]
-    standalone = True
-
-    #database_dir = <where_the_data_package_is>/niriimg_tutorial/playground
-    database_dir = <where_the_data_package_is>/niriimg_tutorial
+    #databases = <where_the_data_package_is>/niriimg_tutorial/playground/cal_manager.db get
+    databases = <where_the_data_package_is>/niriimg_tutorial/cal_manager.db get
 
 
 ``ls <where_the_data_package_is>/niriimg_tutorial`` should show a file called
@@ -272,11 +270,17 @@ The ``rsys.cfg`` file should look like this::
 
    caldb config
 
-   Using configuration file: ~/.geminidr/rsys.cfg
-   Active database directory: <where_the_data_package_is>/niriimg_tutorial/
-   Database file: <where_the_data_package_is>/niriimg_tutorial/cal_manager.db
+   Using configuration files: ('~/.dragons/dragonsrc',)
 
-   The 'standalone' flag is active, meaning that local calibrations will be used
+   /Users/klabrie/data/tutorials/niriimg_tutorial/cal_manager.db
+     Type:  LocalDB
+     Get:   True
+     Store: False
+
+
+   Database file: /Users/klabrie/data/tutorials/niriimg_tutorial/cal_manager.db
+
+   The calibration dbs are all local, meaning that remote calibrations will not be downloaded
 
 
 .. _solution_caldb2:
@@ -293,11 +297,17 @@ is active.
 
    caldb config
 
-   Using configuration file: ~/.geminidr/rsys.cfg
-   Active database directory: <where_the_data_package_is>/niriimg_tutorial/
-   Database file: <where_the_data_package_is>/niriimg_tutorial/cal_manager.db
+   Using configuration files: ('~/.dragons/dragonsrc',)
 
-   The 'standalone' flag is active, meaning that local calibrations will be used
+   /Users/klabrie/data/tutorials/niriimg_tutorial/cal_manager.db
+     Type:  LocalDB
+     Get:   True
+     Store: False
+
+
+   Database file: /Users/klabrie/data/tutorials/niriimg_tutorial/cal_manager.db
+
+   The calibration dbs are all local, meaning that remote calibrations will not be downloaded
 
 **Question 1**
 
@@ -315,16 +325,14 @@ is active.
 
 **Question 3**
 
-Edit ``rsys.cfg``.  Comment out the ``niriimg_tutorial`` path and uncomment
+Edit ``dragonsrc``.  Comment out the ``niriimg_tutorial`` path and uncomment
 the ``playground`` path.
 
 ::
 
     [calibs]
-    standalone = True
-
-    database_dir = <where_the_data_package_is>/niriimg_tutorial/playground
-    #database_dir = <where_the_data_package_is>/niriimg_tutorial
+    databases = <where_the_data_package_is>/niriimg_tutorial/playground/cal_manager.db get
+    #databases = <where_the_data_package_is>/niriimg_tutorial/cal_manager.db get
 
 Confirm activation with ``caldb config``.
 
@@ -398,11 +406,11 @@ Solution to :ref:`Exercise - Custom Recipe 1 <ex_customrecipe1>`
 
 ::
 
-   showrecipes ../playdata/N20160102S0363.fits
+   showrecipes ../playdata/example1/N20160102S0363.fits
 
 ::
 
-   cp /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py .
+   cp /Users/klabrie/condaenvs/public3.10_3.1.0/lib/python3.10/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py .
    mv recipes_FLAT_IMAGE.py myNIRIflats.py
 
 .. code-block:: python
@@ -437,66 +445,66 @@ Solution to :ref:`Exercise - Tools 1 <ex_tools1>`
 
 ::
 
-   showd -d exposure_time,filter_name,ut_date ../playdata/*.fits
+   showd -d exposure_time,filter_name,ut_date ../playdata/example1/*.fits
 
-   --------------------------------------------------------------------------
-   filename                          exposure_time   filter_name      ut_date
-   --------------------------------------------------------------------------
-   ../playdata/N20160102S0270.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0271.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0272.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0273.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0274.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0275.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0276.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0277.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0278.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0279.fits          20.002       H_G0203   2016-01-02
-   ../playdata/N20160102S0295.fits          10.005       H_G0203   2016-01-02
-   ../playdata/N20160102S0296.fits          10.005       H_G0203   2016-01-02
-   ../playdata/N20160102S0297.fits          10.005       H_G0203   2016-01-02
-   ../playdata/N20160102S0298.fits          10.005       H_G0203   2016-01-02
-   ../playdata/N20160102S0299.fits          10.005       H_G0203   2016-01-02
-   ../playdata/N20160102S0363.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0364.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0365.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0366.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0367.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0368.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0369.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0370.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0371.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0372.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0373.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0374.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0375.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0376.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0377.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0378.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0379.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0380.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0381.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0382.fits          42.001       H_G0203   2016-01-02
-   ../playdata/N20160102S0423.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0424.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0425.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0426.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0427.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0428.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0429.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0430.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0431.fits          20.002         blank   2016-01-02
-   ../playdata/N20160102S0432.fits          20.002         blank   2016-01-02
-   ../playdata/N20160103S0463.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0464.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0465.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0466.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0467.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0468.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0469.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0470.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0471.fits           1.001         blank   2016-01-03
-   ../playdata/N20160103S0472.fits           1.001         blank   2016-01-03
+   -----------------------------------------------------------------------------------
+   filename                                   exposure_time   filter_name      ut_date
+   -----------------------------------------------------------------------------------
+   ../playdata/example1/N20160102S0270.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0271.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0272.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0273.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0274.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0275.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0276.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0277.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0278.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0279.fits          20.002       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0295.fits          10.005       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0296.fits          10.005       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0297.fits          10.005       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0298.fits          10.005       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0299.fits          10.005       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0363.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0364.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0365.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0366.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0367.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0368.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0369.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0370.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0371.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0372.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0373.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0374.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0375.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0376.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0377.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0378.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0379.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0380.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0381.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0382.fits          42.001       H_G0203   2016-01-02
+   ../playdata/example1/N20160102S0423.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0424.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0425.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0426.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0427.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0428.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0429.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0430.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0431.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160102S0432.fits          20.002         blank   2016-01-02
+   ../playdata/example1/N20160103S0463.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0464.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0465.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0466.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0467.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0468.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0469.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0470.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0471.fits           1.001         blank   2016-01-03
+   ../playdata/example1/N20160103S0472.fits           1.001         blank   2016-01-03
 
 
 .. _solution_tools2:
@@ -506,31 +514,31 @@ Solution to :ref:`Exercise - Tools 2 <ex_tools2>`
 
 ::
 
-   dataselect ../playdata/*.fits --expr='observation_class=="science" and observation_type=="OBJECT"' | showd -d object
+   dataselect ../playdata/example1/*.fits --expr='observation_class=="science" and observation_type=="OBJECT"' | showd -d object
 
-   -----------------------------------------
-   filename                           object
-   -----------------------------------------
-   ../playdata/N20160102S0270.fits   SN2014J
-   ../playdata/N20160102S0271.fits   SN2014J
-   ../playdata/N20160102S0272.fits   SN2014J
-   ../playdata/N20160102S0273.fits   SN2014J
-   ../playdata/N20160102S0274.fits   SN2014J
-   ../playdata/N20160102S0275.fits   SN2014J
-   ../playdata/N20160102S0276.fits   SN2014J
-   ../playdata/N20160102S0277.fits   SN2014J
-   ../playdata/N20160102S0278.fits   SN2014J
-   ../playdata/N20160102S0279.fits   SN2014J
+   --------------------------------------------------
+   filename                                    object
+   --------------------------------------------------
+   ../playdata/example1/N20160102S0270.fits   SN2014J
+   ../playdata/example1/N20160102S0271.fits   SN2014J
+   ../playdata/example1/N20160102S0272.fits   SN2014J
+   ../playdata/example1/N20160102S0273.fits   SN2014J
+   ../playdata/example1/N20160102S0274.fits   SN2014J
+   ../playdata/example1/N20160102S0275.fits   SN2014J
+   ../playdata/example1/N20160102S0276.fits   SN2014J
+   ../playdata/example1/N20160102S0277.fits   SN2014J
+   ../playdata/example1/N20160102S0278.fits   SN2014J
+   ../playdata/example1/N20160102S0279.fits   SN2014J
 
 ::
 
-   dataselect ../playdata/*.fits --expr='observation_class=="partnerCal" and observation_type=="OBJECT"' | showd -d object
+   dataselect ../playdata/example1/*.fits --expr='observation_class=="partnerCal" and observation_type=="OBJECT"' | showd -d object
 
-   ----------------------------------------
-   filename                          object
-   ----------------------------------------
-   ../playdata/N20160102S0295.fits    FS 17
-   ../playdata/N20160102S0296.fits    FS 17
-   ../playdata/N20160102S0297.fits    FS 17
-   ../playdata/N20160102S0298.fits    FS 17
-   ../playdata/N20160102S0299.fits    FS 17
+   -------------------------------------------------
+   filename                                   object
+   -------------------------------------------------
+   ../playdata/example1/N20160102S0295.fits    FS 17
+   ../playdata/example1/N20160102S0296.fits    FS 17
+   ../playdata/example1/N20160102S0297.fits    FS 17
+   ../playdata/example1/N20160102S0298.fits    FS 17
+   ../playdata/example1/N20160102S0299.fits    FS 17

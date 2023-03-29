@@ -1,6 +1,6 @@
 .. what_are_recipes_and_primitives.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _basic1_recipes_and_primitives:
 
@@ -122,16 +122,16 @@ The syntax is::
 
     showrecipes fitsfile_name.fits
 
-Let's look at a couple examples.  From the ``niriimg_tutorial/playdata``
+Let's look at a couple examples.  From the ``niriimg_tutorial/playdata/example1/``
 directory::
 
     Recipe not provided, default recipe (makeProcessedFlat) will be used.
-    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0373.fits
+    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1/N20160102S0373.fits
     Input tags: ['GCALFLAT', 'NORTH', 'AT_ZENITH', 'NON_SIDEREAL', 'AZEL_TARGET', 'RAW', 'IMAGE', 'GCAL_IR_ON', 'NIRI', 'GEMINI', 'UNPREPARED', 'LAMPON', 'CAL', 'FLAT']
     Input mode: sq
     Input recipe: makeProcessedFlat
     Matched recipe: geminidr.niri.recipes.sq.recipes_FLAT_IMAGE::makeProcessedFlat
-    Recipe location: /Users/klabrie/condaenvs/public3.7_3.0.1_20211206/lib/python3.7/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
+    Recipe location: /Users/klabrie/condaenvs/public3.10_3.1.0/lib/python3.10/site-packages/geminidr/niri/recipes/sq/recipes_FLAT_IMAGE.py
     Recipe tags: {'FLAT', 'IMAGE', 'CAL', 'NIRI'}
     Primitives used:
        p.prepare()
@@ -154,7 +154,7 @@ flag::
 
     showrecipes N20160102S0270.fits --all
 
-    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0270.fits
+    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1/N20160102S0270.fits
     Input tags: {'NIRI', 'NORTH', 'GEMINI', 'UNPREPARED', 'IMAGE', 'RAW', 'SIDEREAL'}
     Recipes available for the input file:
        geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
@@ -177,8 +177,8 @@ The recipe library for science quality has three recipes: ``alignAndStack``,
     night, to help with the assessment of the sky conditions and the resulting
     quality of the data.  Everything defaults to "sq".
 
-    The last three "sq" recipes are really the "ql" recipes.  This a newly
-    discovered bug (circa Dec 2021).  The NIRI quicklook recipes are identical to
+    The last three "sq" recipes are really the "ql" recipes.  This a known
+    bug (circa April 2023).  The NIRI quicklook recipes are identical to
     the science recipes and are just "Python imported" from the science module,
     and that import trips the current implementation of ``showrecipes``.
 
@@ -187,7 +187,7 @@ the ``-r`` flag::
 
     showrecipes N20160102S0270.fits -r makeSkyFlat
 
-    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/N20160102S0270.fits
+    Input file: /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1/N20160102S0270.fits
     Input tags: ['UNPREPARED', 'NORTH', 'NIRI', 'SIDEREAL', 'RAW', 'IMAGE', 'GEMINI']
     Input mode: sq
     Input recipe: makeSkyFlat

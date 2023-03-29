@@ -1,6 +1,6 @@
 .. explore_data.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _basic1_explore_data:
 

@@ -41,4 +41,4 @@
 
 .. |astrodatauser| raw:: html
 
-   <a href="https://dragons.readthedocs.io/projects/astrodata-user-manual/" target="_blank">Astrodata User Manual</a>
+   <a href="https://astrodata.readthedocs.io/en/stable/usermanual/" target="_blank">Astrodata User Manual</a>

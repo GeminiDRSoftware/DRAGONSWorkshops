@@ -1,6 +1,6 @@
 .. what_are_primitives.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _primitives:
 
@@ -72,7 +72,7 @@ The command signature is as follow::
 .. admonition:: Exercise - Primitives 1
 
    Using the science frame ``N20160102S0270.fits`` located in directory
-   ``playdata``, find the answer to the questions below.  First, show the
+   ``playdata/example1``, find the answer to the questions below.  First, show the
    recipe for that file to see the list of primitives.  (Hint: ``showrecipes``)
 
    #. What is the default operation used to combine the sky frames during sky
@@ -85,15 +85,15 @@ The command signature is as follow::
 
    [:ref:`Solution <solution_primitives1>`]
 
-.. showrecipes ../playdata/N20160102S0270.fits
+.. showrecipes ../playdata/example1/N20160102S0270.fits
 
-.. showpars ../playdata/N20160102S0270.fits skyCorrect
+.. showpars ../playdata/example1/N20160102S0270.fits skyCorrect
    -> operation = 'median'
 
-.. showpars ../playdata/N20160102S0270.fits darkCorrect
+.. showpars ../playdata/example1/N20160102S0270.fits darkCorrect
    -> do_dark.  Set it to False.
 
-.. showpars ../playdata/N20160102S0270.fits stackFrames
+.. showpars ../playdata/example1/N20160102S0270.fits stackFrames
    -> reject_method.  Options: minmax, none, varclip, sigclip
 
 

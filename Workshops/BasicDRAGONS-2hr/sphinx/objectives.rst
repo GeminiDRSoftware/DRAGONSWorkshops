@@ -34,18 +34,17 @@ Setting up
 ==========
 The participants who wish to following along and run the examples and
 exercises are expected to have already installed DRAGONS on their
-computer.  See the **installation instructions**:
-
-`<https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
+computer.  See the **installation instructions**, |RSUserInstall|.
 
 Follow the Python 3 and DRAGONS instructions, IRAF is not needed.  Make sure
 that you do the steps in the "Configure DRAGONS" section.
 
-**This workshop is written for DRAGONS v3.0**
+.. important:: **This workshop is written for DRAGONS v3.1**
 
-The participants will need to download the data package to run the examples and the exercises:
+The participants will need to download the data package to run the examples
+and the exercises:
 
-`<http://www.gemini.edu/sciops/data/software/datapkgs/niriimg_tutorial_datapkg-v1.tar>`_
+`<http://www.gemini.edu/sciops/data/software/datapkgs/niriim_tutorial_datapkg-extended-v1.tar>`_
 
 Download it and unpack it somewhere convenient.
 
@@ -54,20 +53,20 @@ Download it and unpack it somewhere convenient.
 ::
 
     cd <somewhere convenient>
-    tar xvf niriimg_tutorial_datapkg-v1.tar
-    bunzip2 niriimg_tutorial/playdata/*.bz2
+    tar xvf niriim_tutorial_datapkg-extended-v1.tar
+    bunzip2 niriimg_tutorial/playdata/example1/*.bz2
 
-The datasets are found in the subdirectory ``niriimg_tutorial/playdata``, and
+The datasets are found in the subdirectory ``niriimg_tutorial/playdata/example1/``, and
 we will work in the subdirectory named ``niriimg_tutorial/playground``.
 
 .. note::
-   If you are attending a live workshop, it is advisable to also download the preprocessed
-   data package in case you encounter technical difficulties that prevents you from running
-   the full demo yourself.
+   If you are attending a live workshop, it is advisable to also download the
+   preprocessed data package in case you encounter technical difficulties
+   that prevents you from running the full demo yourself.
    The content of that package will allow you to continue with most of the exercises using
    those preprocessed data.  Download the "just-in-case" package at:
 
    `<https://drive.google.com/file/d/1sJd8bHUFZ3-dNVT3_VllcqplnoSZr4LJ/view?usp=sharing>`_
 
-   You do not need to do anything with it now other then keeping it somewhere safe. Hopefully,
-   everything will run smoothly and you will not need it.
+   You do not need to do anything with it now other then keeping it somewhere
+   safe. Hopefully, everything will run smoothly and you will not need it.

@@ -35,19 +35,17 @@ Setting up
 ==========
 The participants who wish to following along and run the examples and
 exercises are expected to have already installed DRAGONS on their
-computer.  See the **installation instructions**:
-
-`<https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
+computer.  See the **installation instructions**, |RSUserInstall|.
 
 Follow the Python 3 and DRAGONS instructions, IRAF is not needed.  Make sure
 that you do the steps in the "Configure DRAGONS" section.
 
-**This workshop is written for DRAGONS v3.0**
+.. important:: **This workshop is written for DRAGONS v3.1**
 
-Also, the participants will need to download the data package to run the
+The participants will need to download the data package to run the
 examples and the exercises:
 
-`<https://www.gemini.edu/observing/phase-iii/understanding-and-processing-data/data-processing-software/download-latest>`_
+`<http://www.gemini.edu/sciops/data/software/datapkgs/niriim_tutorial_datapkg-extended-v1.tar>`_
 
 Download it and unpack it somewhere convenient.
 
@@ -56,15 +54,16 @@ Download it and unpack it somewhere convenient.
 ::
 
     cd <somewhere convenient>
-    tar xvf niriimg_tutorial_datapkg-v1.tar
-    bunzip2 niriimg_tutorial/playdata/*.bz2
+    tar xvf niriim_tutorial_datapkg-extended-v1.tar
+    bunzip2 niriimg_tutorial/playdata/example1/*.bz2
 
-The datasets are found in the subdirectory ``niriimg_tutorial/playdata``, and
+The datasets are found in the subdirectory ``niriimg_tutorial/playdata/example1``, and
 we will work in the subdirectory named ``niriimg_tutorial/playground``.
 
 Finally, for this short version, additional files that would normally be
-created during the workshop but are not due to the time constraint need to
-be download and added to the ``niriimg_tutorial/playground`` directory.
+created during the full workshop but are not due to the time constraint
+will need to be download and added to the ``niriimg_tutorial/playground``
+directory.
 
 `<https://drive.google.com/file/d/1sJd8bHUFZ3-dNVT3_VllcqplnoSZr4LJ/view?usp=sharing>`_
 

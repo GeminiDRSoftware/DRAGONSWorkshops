@@ -1,21 +1,6 @@
 .. tools.rst
 
-.. include:: DRAGONSlinks.txt
-
-.. |suptools| raw:: html
-
-    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/supptools.html" target="_blank">Supplemental Tools</a>
-
-.. |rsusermanual| raw:: html
-
-    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/index.html" target="_blank">Recipe System User Manual</a>
-
-
-
 .. _tools:
-
-
-
 
 *****
 Tools
@@ -29,7 +14,7 @@ Here we will explore ``dataselect`` a bit more, and introduce ``showd`` and
 ``typewalk``.
 
 Additional information about the tools can be found in the |suptools| chapter
-of the |rsusermanual|.
+of the |RSUser|.
 
 
 typewalk
@@ -39,12 +24,12 @@ The oddly-named ``typewalk`` tool allows the user the list the ``astrodata`` tag
 through subdirectories.  It can also be used to select data on tags, but we
 recommend using the much more flexible ``dataselect`` for that.
 
-To see the type of data files that we have in ``playdata`` and see which
+To see the type of data files that we have in ``playdata/example1`` and see which
 tags are available for selection::
 
-    typewalk --dir ../playdata
+    typewalk --dir ../playdata/example1
 
-    directory:  /Users/klabrie/data/tutorials/niriimg_tutorial/playdata
+    directory:  /Users/klabrie/data/tutorials/niriimg_tutorial/playdata/example1
      N20160102S0270.fits ............... (GEMINI) (IMAGE) (NIRI) (NORTH) (RAW) (SIDEREAL) (UNPREPARED)
      N20160102S0271.fits ............... (GEMINI) (IMAGE) (NIRI) (NORTH) (RAW) (SIDEREAL) (UNPREPARED)
      N20160102S0272.fits ............... (GEMINI) (IMAGE) (NIRI) (NORTH) (RAW) (SIDEREAL) (UNPREPARED)
@@ -125,12 +110,12 @@ produced with the ``--csv`` flag.
 .. admonition:: Exercise - Tools 1
 
     Get the exposure time, filter name, and UT date of all the
-    observations in ``playdata``.  Use the |descriptors| list from the
+    observations in ``playdata/example1``.  Use the |descriptors| list from the
     |astrodatauser|.
 
     [:ref:`Solution <solution_tools1>`]
 
-.. showd -d exposure_time,filter_name,ut_date ../playdata/*.fits
+.. showd -d exposure_time,filter_name,ut_date ../playdata/example1/*.fits
 
 
 dataselect
@@ -146,33 +131,33 @@ Here are a few examples.
 
 Select only darks::
 
-    dataselect ../playdata/*.fits --tags DARK
+    dataselect ../playdata/example1/*.fits --tags DARK
 
 Select only **non**-darks::
 
-    dataselect ../playdata/*.fits --xtags DARK
+    dataselect ../playdata/example1/*.fits --xtags DARK
 
 Select lamp-on flats::
 
-    dataselect ../playdata/*.fits --tags FLAT,LAMPON
+    dataselect ../playdata/example1/*.fits --tags FLAT,LAMPON
 
 Select any frames with exposure time of 10 seconds::
 
-    dataselect ../playdata/*.fits --expr="exposure_time==10"
+    dataselect ../playdata/example1/*.fits --expr="exposure_time==10"
 
 Select 20-second darks::
 
-    dataselect ../playdata/*.fits --tags DARK --expr="exposure_time==20"
+    dataselect ../playdata/example1/*.fits --tags DARK --expr="exposure_time==20"
 
 Select any frames observed on or after 2016-01-03::
 
-    dataselect ../playdata/*.fits --expr="ut_date>='2016-01-03'"
+    dataselect ../playdata/example1/*.fits --expr="ut_date>='2016-01-03'"
 
 We can combine ``dataselect`` and ``showd``.  Here we are going to get the
 observation type, as defined in the Gemini Observing Tool (OT), for those
 frames observed on or after 2016-01-03::
 
-    dataselect ../playdata/*.fits --expr="ut_date>='2016-01-03'" | showd -d observation_type
+    dataselect ../playdata/example1/*.fits --expr="ut_date>='2016-01-03'" | showd -d observation_type
 
 The expression in ``--expr`` is a Python expression using the Python syntax.
 Note the double ``==`` for equality in the examples above.  Using a single ``=``
@@ -197,8 +182,8 @@ Finally, the expression can use the ``and`` and ``or`` logical operators.
 
     [:ref:`Solution <solution_tools2>`]
 
-.. dataselect ../playdata/*.fits --expr='observation_class=="science" and observation_type=="OBJECT"' | showd -d object
-.. dataselect ../playdata/*.fits --expr='observation_class=="partnerCal" and observation_type=="OBJECT"' | showd -d object
+.. dataselect ../playdata/example1/*.fits --expr='observation_class=="science" and observation_type=="OBJECT"' | showd -d object
+.. dataselect ../playdata/example1/*.fits --expr='observation_class=="partnerCal" and observation_type=="OBJECT"' | showd -d object
 
 
 

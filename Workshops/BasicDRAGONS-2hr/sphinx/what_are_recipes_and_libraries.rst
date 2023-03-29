@@ -1,6 +1,6 @@
 .. what_are_recipes_and_libraries.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _recipes:
 
@@ -72,7 +72,7 @@ To see more options, try ``showrecipes -h``.
 
 .. admonition:: Exercise - Recipes 1
 
-   The file ``N20160102S0373.fits``, in the ``playdata`` directory, is a raw
+   The file ``N20160102S0373.fits``, in the ``playdata/example1`` directory, is a raw
    "lamp-on" flat.
 
    * Get the default recipe for a NIRI flat displayed on the terminal
@@ -80,7 +80,7 @@ To see more options, try ``showrecipes -h``.
 
    [:ref:`Solution <solution_recipes1>`]
 
-.. showrecipes ../playdata/N20160102S0373.fits
+.. showrecipes ../playdata/example1/N20160102S0373.fits
 
 .. p.prepare()
    p.addDQ()
@@ -117,7 +117,7 @@ defines which type of data this library is for.
 
 .. admonition:: Exercise - Recipes 2
 
-   The file ``N20160102S0423.fits`` in the ``playdata`` directory is a raw dark.
+   The file ``N20160102S0423.fits`` in the ``playdata/example1`` directory is a raw dark.
 
    * Find the location of the recipe library on your disk.
    * What are the tags assigned to the input file?
@@ -126,7 +126,7 @@ defines which type of data this library is for.
    [:ref:`Solution <solution_recipes2>`]
 
 
-.. showrecipes ../playdata/N20160102S0423.fits
+.. showrecipes ../playdata/example1/N20160102S0423.fits
 
 .. Recipe location:  ...../geminidr/niri/recipes/sq/recipes_DARK.py
 .. Input tags: ['DARK', 'RAW', 'AT_ZENITH', 'NORTH', 'AZEL_TARGET', 'CAL',
@@ -150,7 +150,7 @@ To see all the flags and option, ``showrecipes -h``.
 
 .. admonition:: Exercise - Recipes 3
 
-   For the file ``N20160102S0270.fits`` in the ``playdata`` directory:
+   For the file ``N20160102S0270.fits`` in the ``playdata/example1`` directory:
 
    * List all matching recipes.  Note the "sq", and the "qa" recipes.
    * Show the ``makeSkyFlat`` recipe.  ("sq" is the default.)
@@ -159,7 +159,7 @@ To see all the flags and option, ``showrecipes -h``.
    [:ref:`Solution <solution_recipes3>`]
 
 
-.. showrecipes ../playdata/N20160102S0270.fits --all
+.. showrecipes ../playdata/example1/N20160102S0270.fits --all
 
 .. geminidr.niri.recipes.sq.recipes_IMAGE::alignAndStack
    geminidr.niri.recipes.sq.recipes_IMAGE::makeSkyFlat
@@ -167,7 +167,7 @@ To see all the flags and option, ``showrecipes -h``.
    geminidr.niri.recipes.qa.recipes_IMAGE::makeSkyFlat
    geminidr.niri.recipes.qa.recipes_IMAGE::reduce
 
-.. showrecipes ../playdata/N20160102S0270.fits -r makeSkyFlat
+.. showrecipes ../playdata/example1/N20160102S0270.fits -r makeSkyFlat
 
-.. showrecipes ../playdata/N20160102S0270.fits -r reduce -m qa
+.. showrecipes ../playdata/example1/N20160102S0270.fits -r reduce -m qa
 

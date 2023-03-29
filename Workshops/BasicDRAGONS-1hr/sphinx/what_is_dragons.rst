@@ -51,7 +51,8 @@ The steps are:
 
 1. Create your lists of input data.
 2. Initialize your calibration database.
-3. Reduce your calibrations and upload the info to the database.
+3. Reduce your calibrations and upload the info to the database (the upload
+   can be automated).
 4. Reduce your science, it will pick up the calibrations by itself.
 
 As straightforward as a reduction can be, it can be customized

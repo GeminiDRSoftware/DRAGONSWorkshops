@@ -1,6 +1,6 @@
 .. demo_imaging.rst
 
-.. include:: DRAGONSlinks.txt
+.. .. include:: DRAGONSlinks.txt
 
 .. _demo_imaging:
 
@@ -10,7 +10,7 @@ Demo imaging
 
 To get ourselves oriented and get a feel for how data is processed with
 DRAGONS, we will run a full reduction on our sample data.  The full tutorial
-using this data can be found at `<https://dragons.readthedocs.io/projects/niriimg-drtutorial/en/stable/index.html>`_.
+for reducing NIRI data can be found at |NIRIImgTut|.
 
 Here, we go through the steps with a bit
 less discussion than in the full tutorial as the purpose is simply to provide
@@ -19,7 +19,7 @@ not experience it before.
 
 The observations are of an extended source, a nearby galaxy.  The instrument
 used is NIRI.  The science sequence is a series of dithers on target with full
-offset to sky.  We will create a master dark, a BPM, a master flat, a reduced
+offset to sky.  We will create a master dark, a master flat, a reduced
 flux standard, and finally create a calibrated, sky-subtracted stack of the
 science observations.
 
@@ -27,7 +27,7 @@ Let's run all the steps.
 
 #. Set up the local calibration manager
 #. Create the file lists
-#. Create the calibration files (dark, bpm, flat)
+#. Create the calibration files (dark, flat)
 #. Reduce the flux standard
 #. Reduce the science observations
 
@@ -43,15 +43,20 @@ We will discuss the local calibration manager in a later chapter.
 The calibration manager is the first thing to set up when starting on a data
 reduction project.  It provides the automated calibration association.
 
-The file to pay attention to is: ``~/.geminidr/rsys.cfg`` (DRAGONS v3.0)
+The file to pay attention to is: ``~/.dragons/dragonsrc`` (DRAGONS v3.1+)
 
 Edit that file to contain the following::
 
     [calibs]
-    standalone = True
-    database_dir = <where_the_data_package_is>/niriimg_tutorial/playground
+    databases = <where_the_data_package_is>/niriimg_tutorial/playground/cal_manager.db get
 
-About the path for ``database_dir``, we recommend the directory you are using
+In this configuration, with the "get" flag, DRAGONS will retrieve the processed
+calibration automatically from that database.  You could add "store" after the
+"get" to have DRAGONS add the processed calibrations to the
+database automatically (effectively running ``caldb add`` for you).  Here we
+will add the calibrations it manually.
+
+About the path for ``databases``, we recommend the directory you are using
 to work on the data.  But it can be anywhere.
 
 Once the configuration file is set up, initialize the database.  This needs to
@@ -62,12 +67,12 @@ be done only once per database.
     caldb init
 
 This creates a new file, ``cal_manager.db``, in the directory specified by
-``database_dir``.
+``databases``.
 
 
 Create the file lists
 =====================
-The user has to sort the files.  DRAGONS is a "User in the loop" pipeline.
+The user has to sort the files.  DRAGONS is a "User-in-the-Loop" pipeline.
 We have some tools to help.  We will have a closer look at them later.
 
 We have long darks that match the science, a series of lamp-on and lamp-off
@@ -77,17 +82,27 @@ science target.
 
 ::
 
-    dataselect ../playdata/*.fits --tags DARK --expr='exposure_time==20' -o darks20s.lis
+    dataselect ../playdata/example1/*.fits --tags DARK --expr='exposure_time==20' -o darks20s.lis
 
-    dataselect ../playdata/*.fits --tags FLAT -o flats.lis
+    dataselect ../playdata/example1/*.fits --tags FLAT -o flats.lis
 
-    dataselect ../playdata/*.fits --expr='object=="FS 17"' -o stdstar.lis
+    dataselect ../playdata/example1/*.fits --expr='object=="FS 17"' -o stdstar.lis
 
-    dataselect ../playdata/*.fits --expr='object=="SN2014J"' -o target.lis
+    dataselect ../playdata/example1/*.fits --expr='object=="SN2014J"' -o target.lis
 
 
-Create the master dark, the BPM, and the master flat
-====================================================
+Add static BPM to calibration database
+======================================
+The static BPMs are downloaded from the archive (but included here in our data
+package).
+
+::
+
+    caldb add ../playdata/example1/bpm_20010317_niri_niri_11_full_1amp.fits
+
+
+Create the master dark and the master flat
+==========================================
 
 **Dark**
 

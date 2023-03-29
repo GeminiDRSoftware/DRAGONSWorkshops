@@ -1,11 +1,5 @@
 .. resources.rst
 
-.. include:: DRAGONSlinks.txt
-
-.. |rsusermanual| raw:: html
-
-    <a href="https://dragons.readthedocs.io/projects/recipe-system-users-manual/index.html" target="_blank">Recipe System User Manual</a>
-
 .. _resources:
 
 *********
@@ -17,7 +11,7 @@ The DRAGONS documentation is available on "readthedocs" at
 
 DRAGONS and all its dependencies are installed with conda. Installation
 instruction and a lot of information about how to use DRAGONS are provided
-in the |rsusermanual|.
+in the |RSUser|.
 
 The list of |descriptors| is found in |astrodatauser|.
 
